@@ -3,6 +3,7 @@
 
 class Player : public Character {
  private:
+  // Private because nothing else should access it.
   string battle_cry;
 
  public:

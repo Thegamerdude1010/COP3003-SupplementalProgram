@@ -1,12 +1,10 @@
 #include "Player.h"
 
-Player::Player() : sound("*silence*") {}
+Player::Player() : battle_cry("*silence*") {}
 
-Player::Player(int h, int a, string n, string s) {
-  health = h;
-  attack = a;
+Player::Player(string n, string s) {
+  health = 10;
+  attack = 1;
   name = n;
-  sound = s;
+  battle_cry = s;
 }
-
-string Player::getsound() { return sound; }

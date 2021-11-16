@@ -4,6 +4,7 @@
 using namespace std;
 
 class Character {
+	// All characters will have a health stat, an attack, and a name
  protected:
   int health;
   int attack;

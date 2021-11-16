@@ -10,9 +10,19 @@
 
 using namespace std;
 
-void start_game();
+void run_game();
 
 void battle_cry(Player);
+
+void charge_attack(Player);
+
+Enemy spawn_small_enemy();
+
+Enemy spawn_big_enemy();
+
+void outside_encounter(Enemy, Player);
+void inside_encounter(Enemy, Player);
+void final_encounter(Enemy, Player);
 
 int main() {
   cout << "Do you want to play." << endl;
@@ -28,7 +38,7 @@ int main() {
       option = -1;
       throw 1.1;
     }
-  }  // while I am not catching am exception, C++ allows you to throw any
+  }  // while I am not catching an exception, C++ allows you to throw any
      // object, so I threw a double in this case.
   catch (double) {
     cout << "You didn't enter a number! You can't do that!" << endl;
@@ -37,7 +47,7 @@ int main() {
   while (start) {
     switch (option) {
       case 0:
-        start_game();
+        run_game();
         cout << "\nDo you want to play again\n0: Play\n1: Exit" << endl;
         cin >> option;
         break;
@@ -55,7 +65,7 @@ int main() {
   return 0;
 }
 
-void start_game() {
+void run_game() {
   string name;
   string sound;
   cout << "What is your name?" << endl;
@@ -63,9 +73,30 @@ void start_game() {
   cout << "What is your battlecry?" << endl;
   cin >> sound;
   Player player(name, sound);
-  battle_cry(player);
+  cout << "\n"
+       << player.get_name() << ":\n"
+       << "Health: " << player.get_health()
+       << ", Attack: " << player.get_attack() << endl;
 
-  int a;
+  int option;
+  cout << "\nYou approach a gate. What do you do?" << endl;
+  cout << "0: Look through the gate\n1: Open the gate\n2: look around" << endl;
+  cin >> option;
+  switch (option) {
+    case 0:
+      cout << "An enemy saw you and came through the gate!" << endl;
+      outside_encounter(spawn_small_enemy(), player);
+      cout << "You now enter the gate." << endl;
+      inside_encounter(spawn_big_enemy(), player);
+
+      break;
+      /*case 1:
+      case 2:*/
+  }
+}
+
+void charge_attack(Player player) {
+  float a;
   cout << "Charge attack: Enter the amount to attack!" << endl;
 
   try {
@@ -77,7 +108,7 @@ void start_game() {
       cin.ignore(INT_MAX, '\n');  // ignores input
       throw string("NOT AN INTEGER");
     }
-    player.setattack(a);
+    player.set_attack(a);
   }
   // If the attack entered is too big, the setattack function throws an int,
   // which is caught here. This demonstrates exception handling.
@@ -93,6 +124,208 @@ void start_game() {
 }
 
 void battle_cry(Player p) { cout << p.battle_cry << endl; }
+
+Enemy spawn_small_enemy() {
+  Enemy smallenemy(10, 5, "Goblin", "RAHH!");
+  return smallenemy;
+}
+
+Enemy spawn_big_enemy() {
+  Enemy bigenemy(20, 10, "Ogre", "GHAAARRRRR!");
+  return bigenemy;
+}
+
+Enemy spawn_boss() {
+  Enemy bigenemy(100, 20, "Goblin King", "ROOOAAAAAARRR!");
+  return bigenemy;
+}
+
+void outside_encounter(Enemy enemy, Player player) {
+  cout << "A " << enemy.get_name() << " appeared!" << endl;
+  cout << "What will you do?" << endl;
+  cout << "0: Attack\n1: Defend" << endl;
+  int option;
+  bool alive = true;
+  try {
+    cin >> option;
+    // Source:
+    // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
+    if (cin.fail()) {
+      cin.clear();                // clears cin
+      cin.ignore(INT_MAX, '\n');  // ignores input
+      option = -1;
+      throw 1.1;
+    }
+  }  // while I am not catching an exception, C++ allows you to throw any
+     // object, so I threw a double in this case.
+  catch (double) {
+    cout << "You didn't enter a number! You can't do that!" << endl;
+  }
+
+  while (alive) {
+    switch (option) {
+      case 0:
+        cout << "You succsesfully attacked the enemy" << endl;
+        enemy.take_damage(player.get_attack());
+        cout << "You did " << player.get_attack()
+             << " damage. The enemy now has " << enemy.get_health()
+             << " health." << endl;
+        if (enemy.get_health() < 1) {
+          alive = false;
+        } else {
+          cout << "0: Attack\n1: Defend" << endl;
+          cin >> option;
+        }
+        break;
+      case 1:
+        cout << "You try and defend but you are not very good" << endl;
+        player.take_damage(enemy.get_attack());
+        cout << "You took " << enemy.get_attack() << " damage. You now have "
+             << player.get_health() << " health." << endl;
+        if (player.get_health() < 1) alive = false;
+        break;
+      default:
+        cout << "That wasn't an option!" << endl;
+        cout << "The enemy took advantage of you and killed you" << endl;
+        alive = false;
+    }
+  }
+  if (enemy.get_health() == 0) {
+    cout << "You killed the enemy! Good Job!" << endl;
+    cout << "You leveled up and increased your damage by 2.5 and health by 10!" << endl;
+    float newAttack = player.get_attack() + 2.5f;
+    float newHealth = player.get_health() + 10.0f;
+    player.set_attack(newAttack);
+    cout << "\n"
+         << player.get_name() << ":\n"
+         << "Health: " << player.get_health()
+         << ", Attack: " << player.get_attack() << endl;
+  } else {
+    cout << "Oh no! You died." << endl;
+  }
+}
+
+void inside_encounter(Enemy enemy, Player player) {
+  cout << "A " << enemy.get_name() << " appeared!" << endl;
+  cout << "What will you do?" << endl;
+  cout << "0: Attack\n1: Defend" << endl;
+  int option;
+  bool alive = true;
+  try {
+    cin >> option;
+    // Source:
+    // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
+    if (cin.fail()) {
+      cin.clear();                // clears cin
+      cin.ignore(INT_MAX, '\n');  // ignores input
+      option = -1;
+      throw 1.1;
+    }
+  }  // while I am not catching an exception, C++ allows you to throw any
+     // object, so I threw a double in this case.
+  catch (double) {
+    cout << "You didn't enter a number! You can't do that!" << endl;
+  }
+
+  while (alive) {
+    switch (option) {
+      case 0:
+        cout << "You succsesfully attacked the enemy" << endl;
+        enemy.take_damage(player.get_attack());
+        cout << "You did " << player.get_attack()
+             << " damage. The enemy now has " << enemy.get_health()
+             << " health." << endl;
+        if (enemy.get_health() == 0) alive = false;
+        cout << "0: Attack\n1: Defend" << endl;
+        cin >> option;
+        break;
+      case 1:
+        cout << "You try and defend but you are not very good" << endl;
+        player.take_damage(enemy.get_attack());
+        cout << "You took " << enemy.get_attack() << " damage. You now have "
+             << player.get_health() << " health." << endl;
+        if (player.get_health() == 0) alive = false;
+        break;
+      default:
+        cout << "That wasn't an option!" << endl;
+        cout << "The enemy took advantage of you and killed you" << endl;
+        alive = false;
+    }
+  }
+  if (enemy.get_health() == 0) {
+    cout << "You killed the enemy! Good Job!" << endl;
+    cout << "You leveled up and increased your damage by 2.5!" << endl;
+    float newAttack = player.get_attack() + 2.5f;
+    player.set_attack(newAttack);
+    cout << "\n"
+         << player.get_name() << ":\n"
+         << "Health: " << player.get_health()
+         << ", Attack: " << player.get_attack() << endl;
+  } else {
+    cout << "Oh no! You died." << endl;
+  }
+}
+
+void final_encounter(Enemy enemy, Player player) {
+  cout << "The " << enemy.get_name() << " appeared!" << endl;
+  cout << "What will you do?" << endl;
+  cout << "0: Attack\n1: Defend" << endl;
+  int option;
+  bool alive = true;
+  try {
+    cin >> option;
+    // Source:
+    // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
+    if (cin.fail()) {
+      cin.clear();                // clears cin
+      cin.ignore(INT_MAX, '\n');  // ignores input
+      option = -1;
+      throw 1.1;
+    }
+  }  // while I am not catching an exception, C++ allows you to throw any
+     // object, so I threw a double in this case.
+  catch (double) {
+    cout << "You didn't enter a number! You can't do that!" << endl;
+  }
+
+  while (alive) {
+    switch (option) {
+      case 0:
+        cout << "You succsesfully attacked the enemy" << endl;
+        enemy.take_damage(player.get_attack());
+        cout << "You did " << player.get_attack()
+             << " damage. The enemy now has " << enemy.get_health()
+             << " health." << endl;
+        if (enemy.get_health() == 0) alive = false;
+        cout << "0: Attack\n1: Defend" << endl;
+        cin >> option;
+        break;
+      case 1:
+        cout << "You try and defend but you are not very good" << endl;
+        player.take_damage(enemy.get_attack());
+        cout << "You took " << enemy.get_attack() << " damage. You now have "
+             << player.get_health() << " health." << endl;
+        if (player.get_health() == 0) alive = false;
+        break;
+      default:
+        cout << "That wasn't an option!" << endl;
+        cout << "The enemy took advantage of you and killed you" << endl;
+        alive = false;
+    }
+  }
+  if (enemy.get_health() == 0) {
+    cout << "You killed the enemy! Good Job!" << endl;
+    cout << "You leveled up and increased your damage by 2.5!" << endl;
+    float newAttack = player.get_attack() + 2.5f;
+    player.set_attack(newAttack);
+    cout << "\n"
+         << player.get_name() << ":\n"
+         << "Health: " << player.get_health()
+         << ", Attack: " << player.get_attack() << endl;
+  } else {
+    cout << "Oh no! You died." << endl;
+  }
+}
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu

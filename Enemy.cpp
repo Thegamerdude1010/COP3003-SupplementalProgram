@@ -1,8 +1,10 @@
 #include "Enemy.h"
 
-Enemy::Enemy() : sound("*silence*") {}
+// This is called an initialization list. In this case, it is included as part
+// of the default constructor.
+Enemy::Enemy() : sound("*silence*"), attack(1) {}
 
-Enemy::Enemy(int h, int a, string n, string s) {
+Enemy::Enemy(float h, int a, string n, string s) {
   health = h;
   attack = a;
   name = n;
@@ -10,3 +12,6 @@ Enemy::Enemy(int h, int a, string n, string s) {
 }
 
 string Enemy::getsound() { return sound; }
+int Enemy::get_attack() { return attack; }
+
+void Enemy::take_damage(float a) { health -= a; }

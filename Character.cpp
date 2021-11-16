@@ -1,18 +1,16 @@
 #include "Character.h"
-#
 
-Character::Character() : health(10), attack(1), name("NoName") {}
+// This is called an initialization list. In this case, it is included as part
+// of the default constructor.
+Character::Character() : health(10), name("NoName") {}
 
-int Character::gethealth() { return health; }
-int Character::getattack() { return attack; }
-string Character::getname() { return name; }
+float Character::get_health() { return health; }
+string Character::get_name() { return name; }
 
-void Character::sethealth(int h) { health = h; }
-void Character::setattack(int a) {
-  if (a <= 100 && a >= 0) {
-    attack = a;
-  } else {
-    throw 1;
-  }
-}
-void Character::setname(string n) { name = n; }
+void Character::set_health(float h) { health = h; }
+
+void Character::set_name(string n) { name = n; }
+
+// This method will take 1 off of health just incase the method is not
+// overridden.
+void Character::take_damage() { health -= 1; }

@@ -4,21 +4,22 @@
 using namespace std;
 
 class Character {
-  // All characters will have a health stat, an attack, and a name. They are set
+  // All characters will have a health stat and a name. They are set
   // as protected so subclasses can use them, but other functions or classes can
   // not.
  protected:
-  int health;
-  int attack;
+  float health;
   string name;
 
  public:
   Character();
-  int gethealth();
-  int getattack();
-  string getname();
+  float get_health();
+  //int getattack();
+  string get_name();
 
-  void sethealth(int h);
-  void setattack(int a);
-  void setname(string n);
+  void set_health(float h);
+  void set_name(string n);
+
+  
+  virtual void take_damage();
 };

@@ -10,6 +10,8 @@
 
 using namespace std;
 
+void input_test(int &);
+
 void run_game();
 
 void battle_cry(Player);
@@ -20,29 +22,13 @@ Enemy spawn_small_enemy();
 
 Enemy spawn_big_enemy();
 
-void outside_encounter(Enemy, Player);
-void inside_encounter(Enemy, Player);
-void final_encounter(Enemy, Player);
+void encounter(Enemy, Player &);
 
 int main() {
   cout << "Do you want to play." << endl;
   cout << "0: Play\n1: Exit" << endl;
-  int option;
-  try {
-    cin >> option;
-    // Source:
-    // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
-    if (cin.fail()) {
-      cin.clear();                // clears cin
-      cin.ignore(INT_MAX, '\n');  // ignores input
-      option = -1;
-      throw 1.1;
-    }
-  }  // while I am not catching an exception, C++ allows you to throw any
-     // object, so I threw a double in this case.
-  catch (double) {
-    cout << "You didn't enter a number! You can't do that!" << endl;
-  }
+  int option = -1;
+  input_test(option);
   bool start = true;
   while (start) {
     switch (option) {
@@ -65,6 +51,24 @@ int main() {
   return 0;
 }
 
+void input_test(int &option) {
+  try {
+    cin >> option;
+    // Source:
+    // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
+    if (cin.fail()) {
+      cin.clear();                // clears cin
+      cin.ignore(INT_MAX, '\n');  // ignores input
+      option = -1;
+      throw 1.1;
+    }
+  }  // while I am not catching an exception, C++ allows you to throw any
+     // object, so I threw a double in this case.
+  catch (double) {
+    cout << "You didn't enter a number! You can't do that!" << endl;
+  }
+}
+
 void run_game() {
   string name;
   string sound;
@@ -85,9 +89,10 @@ void run_game() {
   switch (option) {
     case 0:
       cout << "An enemy saw you and came through the gate!" << endl;
-      outside_encounter(spawn_small_enemy(), player);
-      cout << "You now enter the gate." << endl;
-      inside_encounter(spawn_big_enemy(), player);
+      encounter(spawn_small_enemy(), player);
+      cout << "\nYou now enter the gate." << endl;
+      cout << player.get_attack() << endl;
+      encounter(spawn_big_enemy(), player);
 
       break;
       /*case 1:
@@ -140,27 +145,16 @@ Enemy spawn_boss() {
   return bigenemy;
 }
 
-void outside_encounter(Enemy enemy, Player player) {
+// Passing player by reference lets us adjust the values of our original object.
+// The enemy can be passed by value because either the enemy dies or the game
+// ends, so we don't have to modify the enemy.
+void encounter(Enemy enemy, Player &player) {
   cout << "A " << enemy.get_name() << " appeared!" << endl;
   cout << "What will you do?" << endl;
   cout << "0: Attack\n1: Defend" << endl;
   int option;
   bool alive = true;
-  try {
-    cin >> option;
-    // Source:
-    // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
-    if (cin.fail()) {
-      cin.clear();                // clears cin
-      cin.ignore(INT_MAX, '\n');  // ignores input
-      option = -1;
-      throw 1.1;
-    }
-  }  // while I am not catching an exception, C++ allows you to throw any
-     // object, so I threw a double in this case.
-  catch (double) {
-    cout << "You didn't enter a number! You can't do that!" << endl;
-  }
+  input_test(option);
 
   while (alive) {
     switch (option) {
@@ -174,7 +168,7 @@ void outside_encounter(Enemy enemy, Player player) {
           alive = false;
         } else {
           cout << "0: Attack\n1: Defend" << endl;
-          cin >> option;
+          input_test(option);
         }
         break;
       case 1:
@@ -182,7 +176,13 @@ void outside_encounter(Enemy enemy, Player player) {
         player.take_damage(enemy.get_attack());
         cout << "You took " << enemy.get_attack() << " damage. You now have "
              << player.get_health() << " health." << endl;
-        if (player.get_health() < 1) alive = false;
+        if (player.get_health() < 1) {
+          alive = false;
+        } else {
+          cout << "0: Attack\n1: Defend" << endl;
+          input_test(option);
+        }
+
         break;
       default:
         cout << "That wasn't an option!" << endl;
@@ -192,132 +192,12 @@ void outside_encounter(Enemy enemy, Player player) {
   }
   if (enemy.get_health() == 0) {
     cout << "You killed the enemy! Good Job!" << endl;
-    cout << "You leveled up and increased your damage by 2.5 and health by 10!" << endl;
+    cout << "You leveled up and increased your damage by 2.5 and health by 10!"
+         << endl;
     float newAttack = player.get_attack() + 2.5f;
     float newHealth = player.get_health() + 10.0f;
     player.set_attack(newAttack);
-    cout << "\n"
-         << player.get_name() << ":\n"
-         << "Health: " << player.get_health()
-         << ", Attack: " << player.get_attack() << endl;
-  } else {
-    cout << "Oh no! You died." << endl;
-  }
-}
-
-void inside_encounter(Enemy enemy, Player player) {
-  cout << "A " << enemy.get_name() << " appeared!" << endl;
-  cout << "What will you do?" << endl;
-  cout << "0: Attack\n1: Defend" << endl;
-  int option;
-  bool alive = true;
-  try {
-    cin >> option;
-    // Source:
-    // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
-    if (cin.fail()) {
-      cin.clear();                // clears cin
-      cin.ignore(INT_MAX, '\n');  // ignores input
-      option = -1;
-      throw 1.1;
-    }
-  }  // while I am not catching an exception, C++ allows you to throw any
-     // object, so I threw a double in this case.
-  catch (double) {
-    cout << "You didn't enter a number! You can't do that!" << endl;
-  }
-
-  while (alive) {
-    switch (option) {
-      case 0:
-        cout << "You succsesfully attacked the enemy" << endl;
-        enemy.take_damage(player.get_attack());
-        cout << "You did " << player.get_attack()
-             << " damage. The enemy now has " << enemy.get_health()
-             << " health." << endl;
-        if (enemy.get_health() == 0) alive = false;
-        cout << "0: Attack\n1: Defend" << endl;
-        cin >> option;
-        break;
-      case 1:
-        cout << "You try and defend but you are not very good" << endl;
-        player.take_damage(enemy.get_attack());
-        cout << "You took " << enemy.get_attack() << " damage. You now have "
-             << player.get_health() << " health." << endl;
-        if (player.get_health() == 0) alive = false;
-        break;
-      default:
-        cout << "That wasn't an option!" << endl;
-        cout << "The enemy took advantage of you and killed you" << endl;
-        alive = false;
-    }
-  }
-  if (enemy.get_health() == 0) {
-    cout << "You killed the enemy! Good Job!" << endl;
-    cout << "You leveled up and increased your damage by 2.5!" << endl;
-    float newAttack = player.get_attack() + 2.5f;
-    player.set_attack(newAttack);
-    cout << "\n"
-         << player.get_name() << ":\n"
-         << "Health: " << player.get_health()
-         << ", Attack: " << player.get_attack() << endl;
-  } else {
-    cout << "Oh no! You died." << endl;
-  }
-}
-
-void final_encounter(Enemy enemy, Player player) {
-  cout << "The " << enemy.get_name() << " appeared!" << endl;
-  cout << "What will you do?" << endl;
-  cout << "0: Attack\n1: Defend" << endl;
-  int option;
-  bool alive = true;
-  try {
-    cin >> option;
-    // Source:
-    // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
-    if (cin.fail()) {
-      cin.clear();                // clears cin
-      cin.ignore(INT_MAX, '\n');  // ignores input
-      option = -1;
-      throw 1.1;
-    }
-  }  // while I am not catching an exception, C++ allows you to throw any
-     // object, so I threw a double in this case.
-  catch (double) {
-    cout << "You didn't enter a number! You can't do that!" << endl;
-  }
-
-  while (alive) {
-    switch (option) {
-      case 0:
-        cout << "You succsesfully attacked the enemy" << endl;
-        enemy.take_damage(player.get_attack());
-        cout << "You did " << player.get_attack()
-             << " damage. The enemy now has " << enemy.get_health()
-             << " health." << endl;
-        if (enemy.get_health() == 0) alive = false;
-        cout << "0: Attack\n1: Defend" << endl;
-        cin >> option;
-        break;
-      case 1:
-        cout << "You try and defend but you are not very good" << endl;
-        player.take_damage(enemy.get_attack());
-        cout << "You took " << enemy.get_attack() << " damage. You now have "
-             << player.get_health() << " health." << endl;
-        if (player.get_health() == 0) alive = false;
-        break;
-      default:
-        cout << "That wasn't an option!" << endl;
-        cout << "The enemy took advantage of you and killed you" << endl;
-        alive = false;
-    }
-  }
-  if (enemy.get_health() == 0) {
-    cout << "You killed the enemy! Good Job!" << endl;
-    cout << "You leveled up and increased your damage by 2.5!" << endl;
-    float newAttack = player.get_attack() + 2.5f;
-    player.set_attack(newAttack);
+    player.set_health(newHealth);
     cout << "\n"
          << player.get_name() << ":\n"
          << "Health: " << player.get_health()

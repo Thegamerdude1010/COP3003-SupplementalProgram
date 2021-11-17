@@ -14,7 +14,6 @@ class Character {
  public:
   Character();
   float get_health();
-  //int getattack();
   string get_name();
 
   void set_health(float h);

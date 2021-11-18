@@ -17,4 +17,5 @@ class Enemy : public Character {
   int get_attack();
 
   void take_damage(float);
+  void kill();
 };

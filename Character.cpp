@@ -14,3 +14,5 @@ void Character::set_name(string n) { name = n; }
 // This method will take 1 off of health just incase the method is not
 // overridden.
 void Character::take_damage() { health -= 1; }
+
+void Character::kill() { cout << "All the characters are dying" << endl; }

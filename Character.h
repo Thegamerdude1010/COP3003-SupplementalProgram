@@ -21,4 +21,5 @@ class Character {
 
   
   virtual void take_damage();
+  virtual void kill();
 };

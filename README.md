@@ -6,6 +6,7 @@ This is a simple text based RPG provided as a supplement to the main project lis
 ## Documentation
 
 ## Diagrams
+![Class Diagram](ClassDiagramPic.png)
 
 ## Getting Started
 

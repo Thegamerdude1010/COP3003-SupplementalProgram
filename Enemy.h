@@ -1,5 +1,6 @@
 #pragma once
 #include "Character.h"
+#include <functional>
 
 class Enemy : public Character {
  private:
@@ -16,6 +17,7 @@ class Enemy : public Character {
   string getsound();
   int get_attack();
 
-  void take_damage(float);
+  void take_damage(float, float, function<float(float,float)>);
+  
   void kill();
 };

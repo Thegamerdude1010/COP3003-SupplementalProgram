@@ -2,6 +2,7 @@
 // execution begins and ends there.
 //
 
+#include <functional>
 #include <iostream>
 #include <string>
 
@@ -29,6 +30,8 @@ void final_encounter(Enemy, Player &);
 
 void end_game();
 
+float damage(float h, float a) { return h - a; }
+
 int main() {
   cout << "Do you want to play." << endl;
   cout << "0: Play\n1: Exit" << endl;
@@ -39,7 +42,6 @@ int main() {
     switch (option) {
       case 0:
         run_game();
-        end_game();
         cout << "\nDo you want to play again\n0: Play\n1: Exit" << endl;
         cin >> option;
         break;
@@ -96,16 +98,26 @@ void run_game() {
   cin >> option;
   switch (option) {
     case 0:
-      cout << "An enemy saw you and came through the gate!" << endl;
+      cout << "\nAn enemy saw you and came through the gate!" << endl;
       encounter(spawn_small_enemy(), player);
       cout << "\nYou now enter the gate." << endl;
       encounter(spawn_big_enemy(), player);
-      cout << "The death of the enemy attracted the final boss!" << endl;
+      cout << "\nThe death of the enemy attracted the final boss!" << endl;
       final_encounter(spawn_boss(), player);
-      cout << "You killed the boss! Look what's happening" << endl;
+      cout << "\nYou killed the boss! Look what's happening" << endl;
+      end_game();
       break;
-      /*case 1:
-      case 2:*/
+    case 1:
+      cout << "\nYou enter the gate." << endl;
+      encounter(spawn_big_enemy(), player);
+      cout << "\nKilling that enemy attracted the boss!" << endl;
+      final_encounter(spawn_boss(), player);
+      cout << "\nYou killed the boss! Look what's happening" << endl;
+      end_game();
+    case 2:
+      cout << "\nYou find a hole and enter it." << endl;
+      cout << "\nYou fell into the bosses cave!" << endl;
+      final_encounter(spawn_boss(), player);
   }
 }
 
@@ -158,7 +170,7 @@ void final_encounter(Enemy enemy, Player &player) {
     switch (option) {
       case 0:
         cout << "You succsesfully attacked the enemy" << endl;
-        enemy.take_damage(player.get_attack());
+        enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
         cout << "You did " << player.get_attack()
              << " damage. The enemy now has " << enemy.get_health()
              << " health." << endl;
@@ -185,7 +197,7 @@ void final_encounter(Enemy enemy, Player &player) {
       case 2:
         charge_attack(player);
         cout << "You succsesfully attacked the enemy" << endl;
-        enemy.take_damage(player.get_attack());
+        enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
         cout << "You did " << player.get_attack()
              << " damage. The enemy now has " << enemy.get_health()
              << " health." << endl;
@@ -206,6 +218,7 @@ void final_encounter(Enemy enemy, Player &player) {
     cout << "You killed the enemy! Good Job!" << endl;
   } else {
     cout << "Oh no! You died." << endl;
+    exit(0);
   }
 }
 
@@ -222,7 +235,7 @@ void encounter(Enemy enemy, Player &player) {
     switch (option) {
       case 0:
         cout << "You succsesfully attacked the enemy" << endl;
-        enemy.take_damage(player.get_attack());
+        enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
         cout << "You did " << player.get_attack()
              << " damage. The enemy now has " << enemy.get_health()
              << " health." << endl;
@@ -266,6 +279,7 @@ void encounter(Enemy enemy, Player &player) {
          << ", Attack: " << player.get_attack() << endl;
   } else {
     cout << "Oh no! You died." << endl;
+    exit(0);
   }
 }
 
@@ -280,7 +294,6 @@ void end_game() {
 
   for (int i = 0; i < 10; i++) {
     character[i]->kill();
-    delete character[i];
   }
 }
 
@@ -292,7 +305,7 @@ Enemy spawn_small_enemy() {
 }
 
 Enemy spawn_big_enemy() {
-  Enemy bigenemy(20, 10, "Ogre", "GHAAARRRRR!");
+  Enemy bigenemy(30, 10, "Hobgoblin", "GHAAARRRRR!");
   return bigenemy;
 }
 

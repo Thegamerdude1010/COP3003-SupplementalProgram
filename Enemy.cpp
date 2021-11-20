@@ -14,6 +14,8 @@ Enemy::Enemy(float h, int a, string n, string s) {
 string Enemy::getsound() { return sound; }
 int Enemy::get_attack() { return attack; }
 
-void Enemy::take_damage(float a) { health -= a; }
+void Enemy::take_damage(float h, float a, function<float(float,float)> dmg) { health = dmg(h,a); }
+
+
 
 void Enemy::kill() { cout << "All the enemies are dying! " << sound << endl; }

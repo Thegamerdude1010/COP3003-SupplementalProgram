@@ -17,12 +17,10 @@ The app was created using C++ in Visual Studio.
 Jacob Holmes
 
 ## License
-
+The code in this project is licensed under the MIT License. ![License](LICENSE)
 ## Acknowledgements
 Professor Scott Vanselow.
 <br /> https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
 
 ## Original Project
 The original project is a game created from a tutorial. See details in the repository found here: https://github.com/Thegamerdude1010/RubysAdventure-COP3003Project
-
-## Class Diagram

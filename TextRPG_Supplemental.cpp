@@ -43,7 +43,7 @@ int main() {
       case 0:
         run_game();
         cout << "\nDo you want to play again\n0: Play\n1: Exit" << endl;
-        cin >> option;
+        input_test(option);
         break;
 
       case 1:
@@ -53,7 +53,7 @@ int main() {
 
       default:
         cout << "Incorrect Input, try again" << endl;
-        cin >> option;
+        input_test(option);
     }
   }
   return 0;
@@ -92,32 +92,50 @@ void run_game() {
        << "Health: " << player.get_health()
        << ", Attack: " << player.get_attack() << endl;
 
-  int option;
+  int option = -1;
+  bool running = true;
   cout << "\nYou approach a gate. What do you do?" << endl;
   cout << "0: Look through the gate\n1: Open the gate\n2: look around" << endl;
-  cin >> option;
-  switch (option) {
-    case 0:
-      cout << "\nAn enemy saw you and came through the gate!" << endl;
-      encounter(spawn_small_enemy(), player);
-      cout << "\nYou now enter the gate." << endl;
-      encounter(spawn_big_enemy(), player);
-      cout << "\nThe death of the enemy attracted the final boss!" << endl;
-      final_encounter(spawn_boss(), player);
-      cout << "\nYou killed the boss! Look what's happening" << endl;
-      end_game();
-      break;
-    case 1:
-      cout << "\nYou enter the gate." << endl;
-      encounter(spawn_big_enemy(), player);
-      cout << "\nKilling that enemy attracted the boss!" << endl;
-      final_encounter(spawn_boss(), player);
-      cout << "\nYou killed the boss! Look what's happening" << endl;
-      end_game();
-    case 2:
-      cout << "\nYou find a hole and enter it." << endl;
-      cout << "\nYou fell into the bosses cave!" << endl;
-      final_encounter(spawn_boss(), player);
+  input_test(option);
+  while (running) {
+    switch (option) {
+      case 0:
+        cout << "\nAn enemy saw you and came through the gate!" << endl;
+        encounter(spawn_small_enemy(), player);
+        if (player.get_health() <= 0) return;
+        cout << "\nYou now enter the gate." << endl;
+        encounter(spawn_big_enemy(), player);
+        if (player.get_health() <= 0) return;
+        cout << "\nThe death of the enemy attracted the final boss!" << endl;
+        final_encounter(spawn_boss(), player);
+        if (player.get_health() <= 0) return;
+        cout << "\nYou killed the boss! Look what's happening" << endl;
+        end_game();
+        running = false;
+        break;
+      case 1:
+        cout << "\nYou enter the gate." << endl;
+        encounter(spawn_big_enemy(), player);
+        if (player.get_health() <= 0) return;
+        cout << "\nKilling that enemy attracted the boss!" << endl;
+        final_encounter(spawn_boss(), player);
+        if (player.get_health() <= 0) return;
+        cout << "\nYou killed the boss! Look what's happening" << endl;
+        end_game();
+        running = false;
+        break;
+      case 2:
+        cout << "\nYou find a hole and enter it." << endl;
+        cout << "\nYou fell into the bosses cave!" << endl;
+        final_encounter(spawn_boss(), player);
+        if (player.get_health() <= 0) return;
+        end_game();
+        running = false;
+        break;
+      default:
+        cout << "Incorrect Input, try again" << endl;
+        input_test(option);
+    }
   }
 }
 
@@ -218,7 +236,7 @@ void final_encounter(Enemy enemy, Player &player) {
     cout << "You killed the enemy! Good Job!" << endl;
   } else {
     cout << "Oh no! You died." << endl;
-    exit(0);
+
   }
 }
 
@@ -279,7 +297,6 @@ void encounter(Enemy enemy, Player &player) {
          << ", Attack: " << player.get_attack() << endl;
   } else {
     cout << "Oh no! You died." << endl;
-    exit(0);
   }
 }
 

@@ -26,5 +26,4 @@ class Player : public Character {
   friend void battle_cry(Player);
 
   void take_damage(int);
-  friend void charge_attack(Player &);
 };

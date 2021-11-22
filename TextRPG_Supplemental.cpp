@@ -30,7 +30,7 @@ void final_encounter(Enemy, Player &);
 
 void end_game();
 
-float damage(float h, float a) { return h - a; }
+float damage(float, float);
 
 int main() {
   cout << "Do you want to play." << endl;
@@ -59,24 +59,7 @@ int main() {
   return 0;
 }
 
-// Demonstrates exception handling. Source included.
-void input_test(int &option) {
-  try {
-    cin >> option;
-    // Source:
-    // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
-    if (cin.fail()) {
-      cin.clear();                // clears cin
-      cin.ignore(INT_MAX, '\n');  // ignores input
-      option = -1;
-      throw 1.1;
-    }
-  }  // while I am not catching an exception, C++ allows you to throw any
-     // object, so I threw a double in this case.
-  catch (double) {
-    cout << "You didn't enter a number! You can't do that!" << endl;
-  }
-}
+
 
 // Function that runs the game.
 void run_game() {
@@ -129,6 +112,7 @@ void run_game() {
         cout << "\nYou fell into the bosses cave!" << endl;
         final_encounter(spawn_boss(), player);
         if (player.get_health() <= 0) return;
+        cout << "\nYou killed the boss! Look what's happening" << endl;
         end_game();
         running = false;
         break;
@@ -139,107 +123,9 @@ void run_game() {
   }
 }
 
-// This allows the user to set their own attack. Also a friend function.
-void charge_attack(Player &player) {
-  float a;
-  cout << "Charge attack: Enter the amount to attack!" << endl;
-
-  try {
-    cin >> a;
-    // Source:
-    // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
-    if (cin.fail()) {
-      cin.clear();                // clears cin
-      cin.ignore(INT_MAX, '\n');  // ignores input
-      throw string("NOT AN INTEGER");
-    }
-    player.attack = a;
-  }
-  // If the attack entered is too big, the setattack function throws an int,
-  // which is caught here. This demonstrates exception handling.
-  catch (int) {
-    cout << "Uh oh! Your attack was to powerful and you blew up the universe!"
-         << endl;
-  }
-  // I have this set up to catch a string if cin fails when someone does not
-  // enter an integer.
-  catch (string &e) {
-    cout << e << "\nYou can't enter that silly! Now the game is over." << endl;
-  }
-}
-
-// Demonstrating a friend function. Friend functions are allowed to access
-// private members of a class.
-void battle_cry(Player p) { cout << p.battle_cry << endl; }
-
 // Passing player by reference lets us adjust the values of our original object.
 // The enemy can be passed by value because either the enemy dies or the game
 // ends, so we don't have to modify the enemy.
-// This is the final encounter.
-void final_encounter(Enemy enemy, Player &player) {
-  cout << "The " << enemy.get_name() << " appeared!" << endl;
-  cout << "What will you do?" << endl;
-  cout << "0: Attack\n1: Defend\n2: Charge Attack" << endl;
-  int option;
-  bool alive = true;
-  input_test(option);
-
-  while (alive) {
-    switch (option) {
-      case 0:
-        cout << "You succsesfully attacked the enemy" << endl;
-        enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
-        cout << "You did " << player.get_attack()
-             << " damage. The enemy now has " << enemy.get_health()
-             << " health." << endl;
-        if (enemy.get_health() < 1) {
-          alive = false;
-        } else {
-          cout << "0: Attack\n1: Defend" << endl;
-          input_test(option);
-        }
-        break;
-      case 1:
-        cout << "You try and defend but you are not very good" << endl;
-        player.take_damage(enemy.get_attack());
-        cout << "You took " << enemy.get_attack() << " damage. You now have "
-             << player.get_health() << " health." << endl;
-        if (player.get_health() < 1) {
-          alive = false;
-        } else {
-          cout << "0: Attack\n1: Defend" << endl;
-          input_test(option);
-        }
-
-        break;
-      case 2:
-        charge_attack(player);
-        cout << "You succsesfully attacked the enemy" << endl;
-        enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
-        cout << "You did " << player.get_attack()
-             << " damage. The enemy now has " << enemy.get_health()
-             << " health." << endl;
-        if (enemy.get_health() < 1) {
-          alive = false;
-        } else {
-          cout << "0: Attack\n1: Defend" << endl;
-          input_test(option);
-        }
-        break;
-      default:
-        cout << "That wasn't an option!" << endl;
-        cout << "The enemy took advantage of you and killed you" << endl;
-        alive = false;
-    }
-  }
-  if (enemy.get_health() <= 0) {
-    cout << "You killed the enemy! Good Job!" << endl;
-  } else {
-    cout << "Oh no! You died." << endl;
-
-  }
-}
-
 // This is the general encounter.
 void encounter(Enemy enemy, Player &player) {
   cout << "A " << enemy.get_name() << " appeared!" << endl;
@@ -300,6 +186,81 @@ void encounter(Enemy enemy, Player &player) {
   }
 }
 
+// This is the final encounter.
+void final_encounter(Enemy enemy, Player &player) {
+  cout << "The " << enemy.get_name() << " appeared!" << endl;
+  cout << "What will you do?" << endl;
+  cout << "0: Attack\n1: Defend\n2: Charge Attack" << endl;
+  int option;
+  bool alive = true;
+  input_test(option);
+
+  while (alive) {
+    switch (option) {
+      case 0:
+        cout << "You succsesfully attacked the enemy" << endl;
+        enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
+        cout << "You did " << player.get_attack()
+             << " damage. The enemy now has " << enemy.get_health()
+             << " health." << endl;
+        if (enemy.get_health() < 1) {
+          alive = false;
+        } else {
+          cout << "0: Attack\n1: Defend\n2: Charge Attack" << endl;
+          input_test(option);
+        }
+        break;
+      case 1:
+        cout << "You try and defend but you are not very good" << endl;
+        player.take_damage(enemy.get_attack());
+        cout << "You took " << enemy.get_attack() << " damage. You now have "
+             << player.get_health() << " health." << endl;
+        if (player.get_health() < 1) {
+          alive = false;
+        } else {
+          cout << "0: Attack\n1: Defend\n2: Charge Attack" << endl;
+          input_test(option);
+        }
+
+        break;
+      case 2:
+        try {
+          charge_attack(player);
+        }
+        // If the attack entered is too big, the setattack function throws an
+        // int, which is caught here. This demonstrates exception handling.
+        catch (int) {
+          cout << "Uh oh! Your attack was to powerful and you blew up the "
+                  "universe!"
+               << endl;
+          player.set_health(0);
+          return;
+        }
+        cout << "You succsesfully attacked the enemy" << endl;
+        enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
+        cout << "You did " << player.get_attack()
+             << " damage. The enemy now has " << enemy.get_health()
+             << " health." << endl;
+        if (enemy.get_health() < 1) {
+          alive = false;
+        } else {
+          cout << "0: Attack\n1: Defend\n2: Charge Attack" << endl;
+          input_test(option);
+        }
+        break;
+      default:
+        cout << "That wasn't an option!" << endl;
+        cout << "The enemy took advantage of you and killed you" << endl;
+        alive = false;
+    }
+  }
+  if (enemy.get_health() <= 0) {
+    cout << "You killed the enemy! Good Job!" << endl;
+  } else {
+    cout << "Oh no! You died." << endl;
+  }
+}
+
 // Shows Polymorphism and Iterators on aggregates
 void end_game() {
   Character *character[10];
@@ -312,6 +273,35 @@ void end_game() {
   for (int i = 0; i < 10; i++) {
     character[i]->kill();
   }
+}
+
+// Demonstrating a friend function. Friend functions are allowed to access
+// private members of a class.
+void battle_cry(Player p) { cout << p.battle_cry << endl; }
+
+// This allows the user to set their own attack.
+void charge_attack(Player &player) {
+  float a;
+  cout << "Charge attack: Enter the amount to attack!" << endl;
+
+  try {
+    cin >> a;
+    // Source:
+    // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
+    if (cin.fail()) {
+      cin.clear();                // clears cin
+      cin.ignore(INT_MAX, '\n');  // ignores input
+      throw string("NOT AN INTEGER");
+    }
+  }
+  // I have this set up to catch a string if cin fails when someone does not
+  // enter an integer.
+  catch (string &e) {
+    cout << e << "\nYou can't enter that silly! Now the game is over." << endl;
+  }
+
+  player.set_attack(a);
+
 }
 
 // Spawn an enemy. These functions are here so the code does not have to be
@@ -329,4 +319,26 @@ Enemy spawn_big_enemy() {
 Enemy spawn_boss() {
   Enemy bossenemy(100, 20, "Goblin King", "ROOOAAAAAARRR!");
   return bossenemy;
+}
+
+// Function passed as parameter to demonstrate the concept.
+float damage(float h, float a) { return h - a; }
+
+// Demonstrates exception handling. Source included.
+void input_test(int &option) {
+  try {
+    cin >> option;
+    // Source:
+    // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
+    if (cin.fail()) {
+      cin.clear();                // clears cin
+      cin.ignore(INT_MAX, '\n');  // ignores input
+      option = -1;
+      throw 1.1;
+    }
+  }  // while I am not catching an exception, C++ allows you to throw any
+     // object, so I threw a double in this case.
+  catch (double) {
+    cout << "You didn't enter a number! You can't do that!" << endl;
+  }
 }

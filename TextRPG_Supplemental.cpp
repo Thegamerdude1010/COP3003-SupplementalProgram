@@ -238,6 +238,9 @@ void final_encounter(Enemy enemy, Player &player) {
         }
         cout << "You succsesfully attacked the enemy" << endl;
         enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
+        if (enemy.get_health() < 0) {
+          enemy.set_health(0);
+        }
         cout << "You did " << player.get_attack()
              << " damage. The enemy now has " << enemy.get_health()
              << " health." << endl;

@@ -1,6 +1,18 @@
-// TextRPG_Supplemental.cpp : This file contains the 'main' function. Program
-// execution begins and ends there.
-//
+/** @file filename.cpp
+
+ *  @brief Brief description of file.
+
+ *
+
+ *  Longer description of file.
+
+ *
+
+ *  @author Jacob Holmes
+
+ *  @bug No known bugs.
+
+ */
 
 #include <functional>
 #include <iostream>

@@ -1,0 +1,33 @@
+\hypertarget{_character_8h_source}{}\doxysection{Character.\+h}
+\label{_character_8h_source}\index{C:/Users/jakeh/OneDrive/SchoolWork/COP3003/VisualStudioProjects/TextRPG\_Supplemental/Character.h@{C:/Users/jakeh/OneDrive/SchoolWork/COP3003/VisualStudioProjects/TextRPG\_Supplemental/Character.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{4 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_character}{Character}} \{}
+\DoxyCodeLine{7   \textcolor{comment}{// All characters will have a health stat and a name. They are set}}
+\DoxyCodeLine{8   \textcolor{comment}{// as protected so subclasses can use them, but other functions or classes can}}
+\DoxyCodeLine{9   \textcolor{comment}{// not.}}
+\DoxyCodeLine{10  \textcolor{keyword}{protected}:}
+\DoxyCodeLine{11   \textcolor{keywordtype}{float} healthDefault = 10;}
+\DoxyCodeLine{12   \textcolor{keywordtype}{float} health;}
+\DoxyCodeLine{13   \textcolor{keywordtype}{string} name;}
+\DoxyCodeLine{14   \mbox{\hyperlink{class_character}{\string~Character}}();}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16  \textcolor{keyword}{public}:}
+\DoxyCodeLine{17   \mbox{\hyperlink{class_character}{Character}}();}
+\DoxyCodeLine{18   \textcolor{keywordtype}{float} get\_health();}
+\DoxyCodeLine{19   \textcolor{keywordtype}{string} get\_name();}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21   \textcolor{keywordtype}{void} set\_health(\textcolor{keywordtype}{float} h);}
+\DoxyCodeLine{22   \textcolor{keywordtype}{void} set\_name(\textcolor{keywordtype}{string} n);}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24   }
+\DoxyCodeLine{25   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} take\_damage();}
+\DoxyCodeLine{26   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} kill();}
+\DoxyCodeLine{27 \};}
+
+\end{DoxyCode}

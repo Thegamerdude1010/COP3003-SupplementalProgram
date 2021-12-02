@@ -6,7 +6,7 @@ This is a simple text based RPG provided as a supplement to the main project lis
 ## Documentation
 
 ## Diagrams
-![Class Diagram](docs/ClassDiagramPic.png)
+![Class Diagram](ClassDiagramPic.png)
 
 ## Getting Started
 To run the program, download the .zip file, unzip it, and open the .sln file in Visual Studio. Once it is open, press F5 to run with the debugger or ctrl+F5 to run without the debugger.

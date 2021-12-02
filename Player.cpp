@@ -2,7 +2,7 @@
 
 // This is called an initialization list. In this case, it is included as part
 // of the default constructor.
-Player::Player() : battle_cry("*silence*"), attack(1) {}
+Player::Player() : battle_cry("*silence*"), attack(1) {  }
 
 Player::Player(string n, string s) {
   health = 10;

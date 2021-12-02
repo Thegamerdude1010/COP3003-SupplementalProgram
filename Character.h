@@ -8,8 +8,10 @@ class Character {
   // as protected so subclasses can use them, but other functions or classes can
   // not.
  protected:
+  float healthDefault = 10;
   float health;
   string name;
+  ~Character();
 
  public:
   Character();

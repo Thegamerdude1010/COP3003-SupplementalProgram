@@ -11,13 +11,13 @@
 
 using namespace std;
 
-void input_test(int &);
+void input_test(int &option);
 
 void run_game();
 
-void battle_cry(Player);
+void battle_cry(Player p);
 
-void charge_attack(Player &);
+void charge_attack(Player &player);
 
 Enemy spawn_small_enemy();
 
@@ -138,6 +138,7 @@ void encounter(Enemy enemy, Player &player) {
   while (alive) {
     switch (option) {
       case 0:
+        battle_cry(player);
         cout << "You succsesfully attacked the enemy" << endl;
         enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
         cout << "You did " << player.get_attack()
@@ -198,6 +199,7 @@ void final_encounter(Enemy enemy, Player &player) {
   while (alive) {
     switch (option) {
       case 0:
+        battle_cry(player);
         cout << "You succsesfully attacked the enemy" << endl;
         enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
         cout << "You did " << player.get_attack()

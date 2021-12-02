@@ -1,8 +1,11 @@
 #include "Character.h"
 
 // This is called an initialization list. In this case, it is included as part
-// of the default constructor.
-Character::Character() : health(10), name("NoName") {}
+// of the default constructor. 
+Character::Character() : health(healthDefault), name("NoName") { }
+
+// Destructor was created to clear warnings.
+Character::~Character() = default;
 
 float Character::get_health() { return health; }
 string Character::get_name() { return name; }

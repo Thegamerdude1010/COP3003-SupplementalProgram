@@ -7,10 +7,12 @@ class Character {
   // All characters will have a health stat and a name. They are set
   // as protected so subclasses can use them, but other functions or classes can
   // not.
- protected:
+ private:
   float healthDefault = 10;
   float health;
   string name;
+
+ protected:
   ~Character();
 
  public:

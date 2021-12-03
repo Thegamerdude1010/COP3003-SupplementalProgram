@@ -14,8 +14,8 @@ class Enemy : public Character {
   Enemy();
   Enemy(float h, int a, string n, string s);
   
-  string getsound();
-  int get_attack();
+  auto getsound() -> string;
+  auto get_attack() -> int;
 
   // Accepts a function as a parameter
   void take_damage(float, float, function<float(float,float)>);

@@ -14,6 +14,7 @@
 
  */
 
+#include <array>
 #include <functional>
 #include <iostream>
 #include <string>
@@ -31,18 +32,19 @@ void battle_cry(Player p);
 
 void charge_attack(Player &player);
 
-Enemy spawn_small_enemy();
+// https://www.fluentcpp.com/2021/04/16/trailing-return-types/
+auto spawn_small_enemy() -> Enemy;
 
-Enemy spawn_big_enemy();
+auto spawn_big_enemy() -> Enemy;
 
-Enemy spawn_boss();
+auto spawn_boss() -> Enemy;
 
 void encounter(Enemy, Player &);
 void final_encounter(Enemy, Player &);
 
 void end_game();
 
-float damage(float, float);
+float damage(float h, float a);
 
 int main() {
   cout << "Do you want to play." << endl;
@@ -71,8 +73,6 @@ int main() {
   return 0;
 }
 
-
-
 // Function that runs the game.
 void run_game() {
   string name;
@@ -97,13 +97,19 @@ void run_game() {
       case 0:
         cout << "\nAn enemy saw you and came through the gate!" << endl;
         encounter(spawn_small_enemy(), player);
-        if (player.get_health() <= 0) return;
+        if (player.get_health() <= 0) {
+          return;
+        }
         cout << "\nYou now enter the gate." << endl;
         encounter(spawn_big_enemy(), player);
-        if (player.get_health() <= 0) return;
+        if (player.get_health() <= 0) {
+          return;
+        }
         cout << "\nThe death of the enemy attracted the final boss!" << endl;
         final_encounter(spawn_boss(), player);
-        if (player.get_health() <= 0) return;
+        if (player.get_health() <= 0) {
+          return;
+        }
         cout << "\nYou killed the boss! Look what's happening" << endl;
         end_game();
         running = false;
@@ -111,10 +117,14 @@ void run_game() {
       case 1:
         cout << "\nYou enter the gate." << endl;
         encounter(spawn_big_enemy(), player);
-        if (player.get_health() <= 0) return;
+        if (player.get_health() <= 0) {
+          return;
+        }
         cout << "\nKilling that enemy attracted the boss!" << endl;
         final_encounter(spawn_boss(), player);
-        if (player.get_health() <= 0) return;
+        if (player.get_health() <= 0) {
+          return;
+        }
         cout << "\nYou killed the boss! Look what's happening" << endl;
         end_game();
         running = false;
@@ -123,7 +133,9 @@ void run_game() {
         cout << "\nYou find a hole and enter it." << endl;
         cout << "\nYou fell into the bosses cave!" << endl;
         final_encounter(spawn_boss(), player);
-        if (player.get_health() <= 0) return;
+        if (player.get_health() <= 0) {
+          return;
+        }
         cout << "\nYou killed the boss! Look what's happening" << endl;
         end_game();
         running = false;
@@ -179,6 +191,7 @@ void encounter(Enemy enemy, Player &player) {
       default:
         cout << "That wasn't an option!" << endl;
         cout << "The enemy took advantage of you and killed you" << endl;
+        player.set_health(0);
         alive = false;
     }
   }
@@ -186,8 +199,8 @@ void encounter(Enemy enemy, Player &player) {
     cout << "You killed the enemy! Good Job!" << endl;
     cout << "You leveled up and increased your damage by 2.5 and health by 10!"
          << endl;
-    float newAttack = player.get_attack() + 2.5f;
-    float newHealth = player.get_health() + 10.0f;
+    const float newAttack = player.get_attack() + 2.5f;
+    const float newHealth = player.get_health() + 10.0f;
     player.set_attack(newAttack);
     player.set_health(newHealth);
     cout << "\n"
@@ -268,6 +281,7 @@ void final_encounter(Enemy enemy, Player &player) {
       default:
         cout << "That wasn't an option!" << endl;
         cout << "The enemy took advantage of you and killed you" << endl;
+        player.set_health(0);
         alive = false;
     }
   }
@@ -280,8 +294,9 @@ void final_encounter(Enemy enemy, Player &player) {
 
 // Shows Polymorphism and Iterators on aggregates
 void end_game() {
-  Character *character[10];
-  Enemy *enemy[10];
+  // https://www.codesdope.com/cpp-stdarray/
+  array<Character *, 10> character;
+  array<Enemy *, 10> enemy;
 
   for (int i = 0; i < 10; i++) {
     character[i] = enemy[i] = new Enemy(10, 4, "Enemy", "AAAA");
@@ -313,28 +328,27 @@ void charge_attack(Player &player) {
   }
   // I have this set up to catch a string if cin fails when someone does not
   // enter an integer.
-  catch (string &e) {
+  catch (const string &e) {
     cout << e << "\nYou can't enter that silly! Now the game is over." << endl;
   }
 
   player.set_attack(a);
-
 }
 
 // Spawn an enemy. These functions are here so the code does not have to be
 // repeated.
-Enemy spawn_small_enemy() {
-  Enemy smallenemy(10, 5, "Goblin", "RAHH!");
+auto spawn_small_enemy() -> Enemy {
+  Enemy smallenemy(10.0f, 5, "Goblin", "RAHH!");
   return smallenemy;
 }
 
-Enemy spawn_big_enemy() {
-  Enemy bigenemy(30, 10, "Hobgoblin", "GHAAARRRRR!");
+auto spawn_big_enemy() -> Enemy {
+  Enemy bigenemy(30.0f, 10, "Hobgoblin", "GHAAARRRRR!");
   return bigenemy;
 }
 
-Enemy spawn_boss() {
-  Enemy bossenemy(100, 20, "Goblin King", "ROOOAAAAAARRR!");
+auto spawn_boss() -> Enemy {
+  Enemy bossenemy(100.0f, 20, "Goblin King", "ROOOAAAAAARRR!");
   return bossenemy;
 }
 
@@ -351,7 +365,8 @@ void input_test(int &option) {
       cin.clear();                // clears cin
       cin.ignore(INT_MAX, '\n');  // ignores input
       option = -1;
-      throw 1.1;
+      double d = 1.1;
+      throw d;
     }
   }  // while I am not catching an exception, C++ allows you to throw any
      // object, so I threw a double in this case.

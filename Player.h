@@ -9,7 +9,7 @@ class Player : public Character {
   // The player will have an attack with a decimal so I use float.
   float attack;
 
-  int maxChargeAttack = 10;
+  float maxChargeAttack = 100.0f;
 
  public:
   Player();

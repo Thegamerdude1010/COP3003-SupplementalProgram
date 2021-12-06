@@ -17,8 +17,8 @@ class Character {
 
  public:
   Character();
-  float get_health();
-  string get_name();
+  auto get_health() -> float;
+  auto get_name() -> string;
 
   void set_health(float h);
   void set_name(string n);

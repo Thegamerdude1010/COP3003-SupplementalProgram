@@ -21,4 +21,9 @@ void Player::set_attack(float a) {
   }
 }
 
-void Player::take_damage(int a) { Character::set_health(a); }
+void Player::take_damage(float a) {
+  float h;
+  h = Character::get_health();
+  h -= a;
+  Character::set_health(h);
+}

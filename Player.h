@@ -27,5 +27,5 @@ class Player : public Character {
   // prints the sound.
   friend void battle_cry(Player);
 
-  void take_damage(int);
+  void take_damage(float a);
 };

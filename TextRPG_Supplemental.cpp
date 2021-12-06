@@ -39,8 +39,8 @@ auto spawn_big_enemy() -> Enemy;
 
 auto spawn_boss() -> Enemy;
 
-void encounter(Enemy, Player &);
-void final_encounter(Enemy, Player &);
+void encounter(Enemy enemy, Player &player);
+void final_encounter(Enemy enemy, Player &player);
 
 void end_game();
 
@@ -70,6 +70,7 @@ int main() {
         input_test(option);
     }
   }
+  noexcept(true);
   return 0;
 }
 
@@ -155,7 +156,7 @@ void encounter(Enemy enemy, Player &player) {
   cout << "A " << enemy.get_name() << " appeared!" << endl;
   cout << "What will you do?" << endl;
   cout << "0: Attack\n1: Defend" << endl;
-  int option;
+  int option = -1;
   bool alive = true;
   input_test(option);
 
@@ -177,7 +178,8 @@ void encounter(Enemy enemy, Player &player) {
         break;
       case 1:
         cout << "You try and defend but you are not very good" << endl;
-        player.take_damage(enemy.get_attack());
+        // https://appdividend.com/2019/07/15/type-conversion-in-cpp-tutorial-with-example/
+        player.take_damage(static_cast<float>(enemy.get_attack()));
         cout << "You took " << enemy.get_attack() << " damage. You now have "
              << player.get_health() << " health." << endl;
         if (player.get_health() < 1) {
@@ -199,8 +201,8 @@ void encounter(Enemy enemy, Player &player) {
     cout << "You killed the enemy! Good Job!" << endl;
     cout << "You leveled up and increased your damage by 2.5 and health by 10!"
          << endl;
-    const float newAttack = player.get_attack() + 2.5f;
-    const float newHealth = player.get_health() + 10.0f;
+    const float newAttack = player.get_attack() + 2.5F;
+    const float newHealth = player.get_health() + 10.0F;
     player.set_attack(newAttack);
     player.set_health(newHealth);
     cout << "\n"
@@ -217,7 +219,7 @@ void final_encounter(Enemy enemy, Player &player) {
   cout << "The " << enemy.get_name() << " appeared!" << endl;
   cout << "What will you do?" << endl;
   cout << "0: Attack\n1: Defend\n2: Charge Attack" << endl;
-  int option;
+  int option = -1;
   bool alive = true;
   input_test(option);
 
@@ -239,7 +241,7 @@ void final_encounter(Enemy enemy, Player &player) {
         break;
       case 1:
         cout << "You try and defend but you are not very good" << endl;
-        player.take_damage(enemy.get_attack());
+        player.take_damage(static_cast<float>(enemy.get_attack()));
         cout << "You took " << enemy.get_attack() << " damage. You now have "
              << player.get_health() << " health." << endl;
         if (player.get_health() < 1) {
@@ -295,6 +297,8 @@ void final_encounter(Enemy enemy, Player &player) {
 // Shows Polymorphism and Iterators on aggregates
 void end_game() {
   // https://www.codesdope.com/cpp-stdarray/
+  // The magic number warning is left because I want 10 and only 10 of each
+  // object.
   array<Character *, 10> character;
   array<Enemy *, 10> enemy;
 
@@ -365,7 +369,7 @@ void input_test(int &option) {
       cin.clear();                // clears cin
       cin.ignore(INT_MAX, '\n');  // ignores input
       option = -1;
-      double d = 1.1;
+      constexpr double d = 1.1;
       throw d;
     }
   }  // while I am not catching an exception, C++ allows you to throw any

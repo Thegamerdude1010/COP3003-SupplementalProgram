@@ -1,14 +1,15 @@
 #include "Character.h"
 
 // This is called an initialization list. In this case, it is included as part
-// of the default constructor. 
-Character::Character() : health(healthDefault), name("NoName") { }
+// of the default constructor.
+Character::Character() : health(healthDefault), name("NoName") {}
 
 // Destructor was created to clear warnings.
-Character::~Character() = default;
+Character::~Character() { cout << "Destroyed" << endl; }
 
-float Character::get_health() { return health; }
-string Character::get_name() { return name; }
+// If I use a trailing return type, I can't use constant.
+auto Character::get_health() -> float { return health; }
+auto Character::get_name() -> string { return name; }
 
 void Character::set_health(float h) { health = h; }
 

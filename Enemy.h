@@ -1,3 +1,19 @@
+/** @file Enemy.h
+
+ *  @brief Brief description of file.
+
+ *
+
+ *  Longer description of file.
+
+ *
+
+ *  @author Jacob Holmes
+
+ *  @bug No known bugs.
+
+ */
+
 #pragma once
 #include "Character.h"
 #include <functional>

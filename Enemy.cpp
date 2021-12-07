@@ -1,3 +1,19 @@
+/** @file Enemy.cpp
+
+ *  @brief Brief description of file.
+
+ *
+
+ *  Longer description of file.
+
+ *
+
+ *  @author Jacob Holmes
+
+ *  @bug No known bugs.
+
+ */
+
 #include "Enemy.h"
 
 // This is called an initialization list. In this case, it is included as part

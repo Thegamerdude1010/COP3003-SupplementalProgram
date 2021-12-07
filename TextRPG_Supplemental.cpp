@@ -1,4 +1,4 @@
-/** @file filename.cpp
+/** @file TextRPG_Supplemental.cpp
 
  *  @brief Brief description of file.
 
@@ -70,7 +70,6 @@ int main() {
         input_test(option);
     }
   }
-  noexcept(true);
   return 0;
 }
 
@@ -342,17 +341,17 @@ void charge_attack(Player &player) {
 // Spawn an enemy. These functions are here so the code does not have to be
 // repeated.
 auto spawn_small_enemy() -> Enemy {
-  Enemy smallenemy(10.0f, 5, "Goblin", "RAHH!");
+  Enemy smallenemy(10.0F, 5, "Goblin", "RAHH!");
   return smallenemy;
 }
 
 auto spawn_big_enemy() -> Enemy {
-  Enemy bigenemy(30.0f, 10, "Hobgoblin", "GHAAARRRRR!");
+  Enemy bigenemy(30.0F, 10, "Hobgoblin", "GHAAARRRRR!");
   return bigenemy;
 }
 
 auto spawn_boss() -> Enemy {
-  Enemy bossenemy(100.0f, 20, "Goblin King", "ROOOAAAAAARRR!");
+  Enemy bossenemy(100.0F, 20, "Goblin King", "ROOOAAAAAARRR!");
   return bossenemy;
 }
 

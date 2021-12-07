@@ -1,3 +1,19 @@
+/** @file TextRPG_Supplemental.cpp
+
+ *  @brief Brief description of file.
+
+ *
+
+ *  Longer description of file.
+
+ *
+
+ *  @author Jacob Holmes
+
+ *  @bug No known bugs.
+
+ */
+
 #include "Character.h"
 
 // This is called an initialization list. In this case, it is included as part
@@ -5,7 +21,7 @@
 Character::Character() : health(healthDefault), name("NoName") {}
 
 // Destructor was created to clear warnings.
-Character::~Character() { cout << "Destroyed" << endl; }
+Character::~Character() = default;
 
 // If I use a trailing return type, I can't use constant.
 auto Character::get_health() -> float { return health; }

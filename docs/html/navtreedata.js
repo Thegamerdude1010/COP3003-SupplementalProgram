@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Text Based RPG", "index.html", [
+  [ "Text-Based RPG", "index.html", [
     [ "Simple Text-Based RPG", "md__c___users_jakeh__one_drive__school_work__c_o_p3003__visual_studio_projects__text_r_p_g__supplemental__r_e_a_d_m_e.html", [
       [ "Demonstration", "md__c___users_jakeh__one_drive__school_work__c_o_p3003__visual_studio_projects__text_r_p_g__supplemental__r_e_a_d_m_e.html#autotoc_md1", null ],
       [ "Documentation", "md__c___users_jakeh__one_drive__school_work__c_o_p3003__visual_studio_projects__text_r_p_g__supplemental__r_e_a_d_m_e.html#autotoc_md2", null ],
@@ -43,10 +43,19 @@ var NAVTREE =
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ]
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Related Functions", "functions_rela.html", null ]
+      ] ]
     ] ],
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ]
+      ] ]
     ] ]
   ] ]
 ];

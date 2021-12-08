@@ -1,6 +1,6 @@
 var annotated_dup =
 [
-    [ "Character", "class_character.html", null ],
-    [ "Enemy", "class_enemy.html", null ],
-    [ "Player", "class_player.html", null ]
+    [ "Character", "class_character.html", "class_character" ],
+    [ "Enemy", "class_enemy.html", "class_enemy" ],
+    [ "Player", "class_player.html", "class_player" ]
 ];

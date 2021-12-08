@@ -23,12 +23,16 @@
 #include "Enemy.h"
 #include "Player.h"
 
-/** @brief Short description of function.
+/** @brief This function tests input.
  *
- *  Longer description of function.
+ *  When someone enters something, it may be wrong. This function tests if a
+ * person enters an int. If they don't, it throws an exception. This allows the
+ * program to ask for more input without crashing. It also demonstrates
+ * exception handling.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @param int &option; passing an int by reference allows me to test input and
+ * send the input back
+ *  @return void
  */
 void input_test(int &option);
 

@@ -16,10 +16,24 @@
 
 #include "Player.h"
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 // This is called an initialization list. In this case, it is included as part
 // of the default constructor.
 Player::Player() : battle_cry("*silence*"), attack(1) {  }
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 Player::Player(std::string n, std::string s) {
   Character::set_health(10);
   attack = 5;
@@ -27,8 +41,22 @@ Player::Player(std::string n, std::string s) {
   battle_cry = s;
 }
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 float Player::get_attack() { return attack; }
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 void Player::set_attack(float a) {
   if (a <= maxChargeAttack && a >= 0) {
     attack = a;
@@ -37,6 +65,13 @@ void Player::set_attack(float a) {
   }
 }
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 void Player::take_damage(float a) {
   float h;
   h = Character::get_health();

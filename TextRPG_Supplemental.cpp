@@ -23,28 +23,113 @@
 #include "Enemy.h"
 #include "Player.h"
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 void input_test(int &option);
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 void run_game();
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 void battle_cry(Player p);
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 void charge_attack(Player &player);
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 // https://www.fluentcpp.com/2021/04/16/trailing-return-types/
 auto spawn_small_enemy() -> Enemy;
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 auto spawn_big_enemy() -> Enemy;
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 auto spawn_boss() -> Enemy;
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 void encounter(Enemy enemy, Player &player);
+
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 void final_encounter(Enemy enemy, Player &player);
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 void end_game();
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 float damage(float h, float a);
 
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 int main() {
   std::cout << "Do you want to play." << std::endl;
   std::cout << "0: Play\n1: Exit" << std::endl;

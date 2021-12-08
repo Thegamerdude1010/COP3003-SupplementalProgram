@@ -30,7 +30,7 @@ class Player : public Character {
   // I removed this get function becuase the friend function does its job.
   // string getsound();
 
-  float get_attack();
+  auto get_attack() const -> float;
 
   void set_attack(float a);
 

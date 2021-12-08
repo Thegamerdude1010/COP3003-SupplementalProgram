@@ -40,7 +40,7 @@ Player::Player(std::string n, std::string s) {
  *  @param One for each parameter with the name and a description
  *  @return The word void or a description of what is returned
  */
-float Player::get_attack() { return attack; }
+auto Player::get_attack() const -> float { return attack; }
 
 /** @brief Short description of function.
  *

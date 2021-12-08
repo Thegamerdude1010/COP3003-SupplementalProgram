@@ -29,7 +29,7 @@ class Character {
 
  public:
   Character();
-  auto get_health() -> float;
+  auto get_health() const -> float;
   auto get_name() -> std::string;
 
   void set_health(float h);

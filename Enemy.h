@@ -26,7 +26,7 @@ class Enemy : public Character {
   Enemy(float h, int a, std::string n, std::string s);
 
   auto getsound() -> std::string;
-  auto get_attack() -> int;
+  auto get_attack() const -> int;
 
   // Accepts a function as a parameter
   void take_damage(float, float, std::function<float(float, float)>);

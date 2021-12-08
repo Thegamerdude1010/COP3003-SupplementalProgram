@@ -36,8 +36,7 @@ Character::~Character() = default;
  *  @param One for each parameter with the name and a description
  *  @return The word void or a description of what is returned
  */
-// If I use a trailing return type, I can't use constant.
-auto Character::get_health() -> float { return health; }
+auto Character::get_health() const -> float { return health; }
 
 /** @brief Short description of function.
  *

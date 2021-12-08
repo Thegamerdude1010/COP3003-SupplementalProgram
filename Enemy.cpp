@@ -49,7 +49,7 @@ auto Enemy::getsound() -> std::string { return sound; }
  *  @param One for each parameter with the name and a description
  *  @return The word void or a description of what is returned
  */
-auto Enemy::get_attack() -> int { return attack; }
+auto Enemy::get_attack() const -> int { return attack; }
 
 /** @brief Short description of function.
  *

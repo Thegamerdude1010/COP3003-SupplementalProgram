@@ -25,14 +25,16 @@ Character::~Character() = default;
 
 // If I use a trailing return type, I can't use constant.
 auto Character::get_health() -> float { return health; }
-auto Character::get_name() -> string { return name; }
+auto Character::get_name() -> std::string { return name; }
 
 void Character::set_health(float h) { health = h; }
 
-void Character::set_name(string n) { name = n; }
+void Character::set_name(std::string n) { name = n; }
 
 // This method will take 1 off of health just incase the method is not
 // overridden.
 void Character::take_damage() { health -= 1; }
 
-void Character::kill() { cout << "All the characters are dying" << endl; }
+void Character::kill() {
+  std::cout << "All the characters are dying" << std::endl;
+}

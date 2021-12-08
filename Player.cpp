@@ -20,7 +20,7 @@
 // of the default constructor.
 Player::Player() : battle_cry("*silence*"), attack(1) {  }
 
-Player::Player(string n, string s) {
+Player::Player(std::string n, std::string s) {
   Character::set_health(10);
   attack = 5;
   Character::set_name(n);

@@ -1,10 +1,11 @@
 /** @file TextRPG_Supplemental.cpp
 
- *  @brief Brief description of file.
+ *  @brief Main file of the project.
 
  *
 
- *  Longer description of file.
+ *  This is the main file of the project. It holds the main function, and the
+ functions that run the game. Most of the code is included in this file.
 
  *
 
@@ -21,8 +22,6 @@
 
 #include "Enemy.h"
 #include "Player.h"
-
-using namespace std;
 
 void input_test(int &option);
 
@@ -47,8 +46,8 @@ void end_game();
 float damage(float h, float a);
 
 int main() {
-  cout << "Do you want to play." << endl;
-  cout << "0: Play\n1: Exit" << endl;
+  std::cout << "Do you want to play." << std::endl;
+  std::cout << "0: Play\n1: Exit" << std::endl;
   int option = -1;
   input_test(option);
   bool start = true;
@@ -56,17 +55,18 @@ int main() {
     switch (option) {
       case 0:
         run_game();
-        cout << "\nDo you want to play again\n0: Play\n1: Exit" << endl;
+        std::cout << "\nDo you want to play again\n0: Play\n1: Exit"
+                  << std::endl;
         input_test(option);
         break;
 
       case 1:
-        cout << "Darn. See you later." << endl;
+        std::cout << "Darn. See you later." << std::endl;
         start = false;
         break;
 
       default:
-        cout << "Incorrect Input, try again" << endl;
+        std::cout << "Incorrect Input, try again" << std::endl;
         input_test(option);
     }
   }
@@ -75,73 +75,79 @@ int main() {
 
 // Function that runs the game.
 void run_game() {
-  string name;
-  string sound;
-  cout << "What is your name?" << endl;
-  cin >> name;
-  cout << "What is your battlecry?" << endl;
-  cin >> sound;
+  std::string name;
+  std::string sound;
+  std::cout << "What is your name?" << std::endl;
+  std::cin >> name;
+  std::cout << "What is your battlecry?" << std::endl;
+  std::cin >> sound;
   Player player(name, sound);
-  cout << "\n"
-       << player.get_name() << ":\n"
-       << "Health: " << player.get_health()
-       << ", Attack: " << player.get_attack() << endl;
+  std::cout << "\n"
+            << player.get_name() << ":\n"
+            << "Health: " << player.get_health()
+            << ", Attack: " << player.get_attack() << std::endl;
 
   int option = -1;
   bool running = true;
-  cout << "\nYou approach a gate. What do you do?" << endl;
-  cout << "0: Look through the gate\n1: Open the gate\n2: look around" << endl;
+  std::cout << "\nYou approach a gate. What do you do?" << std::endl;
+  std::cout << "0: Look through the gate\n1: Open the gate\n2: look around"
+            << std::endl;
   input_test(option);
   while (running) {
     switch (option) {
       case 0:
-        cout << "\nAn enemy saw you and came through the gate!" << endl;
+        std::cout << "\nAn enemy saw you and came through the gate!"
+                  << std::endl;
         encounter(spawn_small_enemy(), player);
         if (player.get_health() <= 0) {
           return;
         }
-        cout << "\nYou now enter the gate." << endl;
+        std::cout << "\nYou now enter the gate." << std::endl;
         encounter(spawn_big_enemy(), player);
         if (player.get_health() <= 0) {
           return;
         }
-        cout << "\nThe death of the enemy attracted the final boss!" << endl;
+        std::cout << "\nThe death of the enemy attracted the final boss!"
+                  << std::endl;
         final_encounter(spawn_boss(), player);
         if (player.get_health() <= 0) {
           return;
         }
-        cout << "\nYou killed the boss! Look what's happening" << endl;
+        std::cout << "\nYou killed the boss! Look what's happening"
+                  << std::endl;
         end_game();
         running = false;
         break;
       case 1:
-        cout << "\nYou enter the gate." << endl;
+        std::cout << "\nYou enter the gate." << std::endl;
         encounter(spawn_big_enemy(), player);
         if (player.get_health() <= 0) {
           return;
         }
-        cout << "\nKilling that enemy attracted the boss!" << endl;
+        std::cout << "\nKilling that enemy attracted the boss!" << std::endl;
         final_encounter(spawn_boss(), player);
         if (player.get_health() <= 0) {
           return;
         }
-        cout << "\nYou killed the boss! Look what's happening" << endl;
+        std::cout << "\nYou killed the boss! Look what's happening"
+                  << std::endl;
         end_game();
         running = false;
         break;
       case 2:
-        cout << "\nYou find a hole and enter it." << endl;
-        cout << "\nYou fell into the bosses cave!" << endl;
+        std::cout << "\nYou find a hole and enter it." << std::endl;
+        std::cout << "\nYou fell into the bosses cave!" << std::endl;
         final_encounter(spawn_boss(), player);
         if (player.get_health() <= 0) {
           return;
         }
-        cout << "\nYou killed the boss! Look what's happening" << endl;
+        std::cout << "\nYou killed the boss! Look what's happening"
+                  << std::endl;
         end_game();
         running = false;
         break;
       default:
-        cout << "Incorrect Input, try again" << endl;
+        std::cout << "Incorrect Input, try again" << std::endl;
         input_test(option);
     }
   }
@@ -152,9 +158,9 @@ void run_game() {
 // ends, so we don't have to modify the enemy.
 // This is the general encounter.
 void encounter(Enemy enemy, Player &player) {
-  cout << "A " << enemy.get_name() << " appeared!" << endl;
-  cout << "What will you do?" << endl;
-  cout << "0: Attack\n1: Defend" << endl;
+  std::cout << "A " << enemy.get_name() << " appeared!" << std::endl;
+  std::cout << "What will you do?" << std::endl;
+  std::cout << "0: Attack\n1: Defend" << std::endl;
   int option = -1;
   bool alive = true;
   input_test(option);
@@ -163,61 +169,65 @@ void encounter(Enemy enemy, Player &player) {
     switch (option) {
       case 0:
         battle_cry(player);
-        cout << "You succsesfully attacked the enemy" << endl;
+        std::cout << "You succsesfully attacked the enemy" << std::endl;
         enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
-        cout << "You did " << player.get_attack()
-             << " damage. The enemy now has " << enemy.get_health()
-             << " health." << endl;
+        std::cout << "You did " << player.get_attack()
+                  << " damage. The enemy now has " << enemy.get_health()
+                  << " health." << std::endl;
         if (enemy.get_health() < 1) {
           alive = false;
         } else {
-          cout << "0: Attack\n1: Defend" << endl;
+          std::cout << "0: Attack\n1: Defend" << std::endl;
           input_test(option);
         }
         break;
       case 1:
-        cout << "You try and defend but you are not very good" << endl;
+        std::cout << "You try and defend but you are not very good"
+                  << std::endl;
         // https://appdividend.com/2019/07/15/type-conversion-in-cpp-tutorial-with-example/
         player.take_damage(static_cast<float>(enemy.get_attack()));
-        cout << "You took " << enemy.get_attack() << " damage. You now have "
-             << player.get_health() << " health." << endl;
+        std::cout << "You took " << enemy.get_attack()
+                  << " damage. You now have " << player.get_health()
+                  << " health." << std::endl;
         if (player.get_health() < 1) {
           alive = false;
         } else {
-          cout << "0: Attack\n1: Defend" << endl;
+          std::cout << "0: Attack\n1: Defend" << std::endl;
           input_test(option);
         }
 
         break;
       default:
-        cout << "That wasn't an option!" << endl;
-        cout << "The enemy took advantage of you and killed you" << endl;
+        std::cout << "That wasn't an option!" << std::endl;
+        std::cout << "The enemy took advantage of you and killed you"
+                  << std::endl;
         player.set_health(0);
         alive = false;
     }
   }
   if (enemy.get_health() <= 0) {
-    cout << "You killed the enemy! Good Job!" << endl;
-    cout << "You leveled up and increased your damage by 2.5 and health by 10!"
-         << endl;
+    std::cout << "You killed the enemy! Good Job!" << std::endl;
+    std::cout
+        << "You leveled up and increased your damage by 2.5 and health by 10!"
+        << std::endl;
     const float newAttack = player.get_attack() + 2.5F;
     const float newHealth = player.get_health() + 10.0F;
     player.set_attack(newAttack);
     player.set_health(newHealth);
-    cout << "\n"
+    std::cout << "\n"
          << player.get_name() << ":\n"
          << "Health: " << player.get_health()
-         << ", Attack: " << player.get_attack() << endl;
+              << ", Attack: " << player.get_attack() << std::endl;
   } else {
-    cout << "Oh no! You died." << endl;
+    std::cout << "Oh no! You died." << std::endl;
   }
 }
 
 // This is the final encounter.
 void final_encounter(Enemy enemy, Player &player) {
-  cout << "The " << enemy.get_name() << " appeared!" << endl;
-  cout << "What will you do?" << endl;
-  cout << "0: Attack\n1: Defend\n2: Charge Attack" << endl;
+  std::cout << "The " << enemy.get_name() << " appeared!" << std::endl;
+  std::cout << "What will you do?" << std::endl;
+  std::cout << "0: Attack\n1: Defend\n2: Charge Attack" << std::endl;
   int option = -1;
   bool alive = true;
   input_test(option);
@@ -226,27 +236,29 @@ void final_encounter(Enemy enemy, Player &player) {
     switch (option) {
       case 0:
         battle_cry(player);
-        cout << "You succsesfully attacked the enemy" << endl;
+        std::cout << "You succsesfully attacked the enemy" << std::endl;
         enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
-        cout << "You did " << player.get_attack()
+        std::cout << "You did " << player.get_attack()
              << " damage. The enemy now has " << enemy.get_health()
-             << " health." << endl;
+                  << " health." << std::endl;
         if (enemy.get_health() < 1) {
           alive = false;
         } else {
-          cout << "0: Attack\n1: Defend\n2: Charge Attack" << endl;
+          std::cout << "0: Attack\n1: Defend\n2: Charge Attack" << std::endl;
           input_test(option);
         }
         break;
       case 1:
-        cout << "You try and defend but you are not very good" << endl;
+        std::cout << "You try and defend but you are not very good"
+                  << std::endl;
         player.take_damage(static_cast<float>(enemy.get_attack()));
-        cout << "You took " << enemy.get_attack() << " damage. You now have "
-             << player.get_health() << " health." << endl;
+        std::cout << "You took " << enemy.get_attack()
+                  << " damage. You now have " << player.get_health()
+                  << " health." << std::endl;
         if (player.get_health() < 1) {
           alive = false;
         } else {
-          cout << "0: Attack\n1: Defend\n2: Charge Attack" << endl;
+          std::cout << "0: Attack\n1: Defend\n2: Charge Attack" << std::endl;
           input_test(option);
         }
 
@@ -258,38 +270,39 @@ void final_encounter(Enemy enemy, Player &player) {
         // If the attack entered is too big, the setattack function throws an
         // int, which is caught here. This demonstrates exception handling.
         catch (int) {
-          cout << "Uh oh! Your attack was to powerful and you blew up the "
+          std::cout << "Uh oh! Your attack was to powerful and you blew up the "
                   "universe!"
-               << endl;
+                    << std::endl;
           player.set_health(0);
           return;
         }
-        cout << "You succsesfully attacked the enemy" << endl;
+        std::cout << "You succsesfully attacked the enemy" << std::endl;
         enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
         if (enemy.get_health() < 0) {
           enemy.set_health(0);
         }
-        cout << "You did " << player.get_attack()
+        std::cout << "You did " << player.get_attack()
              << " damage. The enemy now has " << enemy.get_health()
-             << " health." << endl;
+                  << " health." << std::endl;
         if (enemy.get_health() < 1) {
           alive = false;
         } else {
-          cout << "0: Attack\n1: Defend\n2: Charge Attack" << endl;
+          std::cout << "0: Attack\n1: Defend\n2: Charge Attack" << std::endl;
           input_test(option);
         }
         break;
       default:
-        cout << "That wasn't an option!" << endl;
-        cout << "The enemy took advantage of you and killed you" << endl;
+        std::cout << "That wasn't an option!" << std::endl;
+        std::cout << "The enemy took advantage of you and killed you"
+                  << std::endl;
         player.set_health(0);
         alive = false;
     }
   }
   if (enemy.get_health() <= 0) {
-    cout << "You killed the enemy! Good Job!" << endl;
+    std::cout << "You killed the enemy! Good Job!" << std::endl;
   } else {
-    cout << "Oh no! You died." << endl;
+    std::cout << "Oh no! You died." << std::endl;
   }
 }
 
@@ -298,8 +311,8 @@ void end_game() {
   // https://www.codesdope.com/cpp-stdarray/
   // The magic number warning is left because I want 10 and only 10 of each
   // object.
-  array<Character *, 10> character;
-  array<Enemy *, 10> enemy;
+  std::array<Character *, 10> character;
+  std::array<Enemy *, 10> enemy;
 
   for (int i = 0; i < 10; i++) {
     character[i] = enemy[i] = new Enemy(10, 4, "Enemy", "AAAA");
@@ -312,27 +325,28 @@ void end_game() {
 
 // Demonstrating a friend function. Friend functions are allowed to access
 // private members of a class.
-void battle_cry(Player p) { cout << p.battle_cry << endl; }
+void battle_cry(Player p) { std::cout << p.battle_cry << std::endl; }
 
 // This allows the user to set their own attack.
 void charge_attack(Player &player) {
   float a;
-  cout << "Charge attack: Enter the amount to attack!" << endl;
+  std::cout << "Charge attack: Enter the amount to attack!" << std::endl;
 
   try {
-    cin >> a;
+    std::cin >> a;
     // Source:
     // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
-    if (cin.fail()) {
-      cin.clear();                // clears cin
-      cin.ignore(INT_MAX, '\n');  // ignores input
-      throw string("NOT AN INTEGER");
+    if (std::cin.fail()) {
+      std::cin.clear();           // clears cin
+      std::cin.ignore(INT_MAX, '\n');  // ignores input
+      throw std::string("NOT AN INTEGER");
     }
   }
   // I have this set up to catch a string if cin fails when someone does not
   // enter an integer.
-  catch (const string &e) {
-    cout << e << "\nYou can't enter that silly! Now the game is over." << endl;
+  catch (const std::string &e) {
+    std::cout << e << "\nYou can't enter that silly! Now the game is over."
+              << std::endl;
   }
 
   player.set_attack(a);
@@ -361,12 +375,12 @@ float damage(float h, float a) { return h - a; }
 // Demonstrates exception handling. Source included.
 void input_test(int &option) {
   try {
-    cin >> option;
+    std::cin >> option;
     // Source:
     // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
-    if (cin.fail()) {
-      cin.clear();                // clears cin
-      cin.ignore(INT_MAX, '\n');  // ignores input
+    if (std::cin.fail()) {
+      std::cin.clear();           // clears cin
+      std::cin.ignore(INT_MAX, '\n');  // ignores input
       option = -1;
       constexpr double d = 1.1;
       throw d;
@@ -374,6 +388,6 @@ void input_test(int &option) {
   }  // while I am not catching an exception, C++ allows you to throw any
      // object, so I threw a double in this case.
   catch (double) {
-    cout << "You didn't enter a number! You can't do that!" << endl;
+    std::cout << "You didn't enter a number! You can't do that!" << std::endl;
   }
 }

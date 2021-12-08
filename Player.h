@@ -20,7 +20,7 @@
 class Player : public Character {
  private:
   // Private because nothing else should access it.
-  string battle_cry;
+  std::string battle_cry;
 
   // The player will have an attack with a decimal so I use float.
   float attack;
@@ -29,7 +29,7 @@ class Player : public Character {
 
  public:
   Player();
-  Player(string n, string s);
+  Player(std::string n, std::string s);
 
   // I removed this get function becuase the friend function does its job.
   // string getsound();

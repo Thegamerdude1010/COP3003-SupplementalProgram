@@ -17,7 +17,6 @@
 #pragma once
 #include <iostream>
 #include <string>
-using namespace std;
 
 class Character {
   // All characters will have a health stat and a name. They are set
@@ -26,7 +25,7 @@ class Character {
  private:
   float healthDefault = 10;
   float health;
-  string name;
+  std::string name;
 
  protected:
   ~Character();
@@ -34,10 +33,10 @@ class Character {
  public:
   Character();
   auto get_health() -> float;
-  auto get_name() -> string;
+  auto get_name() -> std::string;
 
   void set_health(float h);
-  void set_name(string n);
+  void set_name(std::string n);
 
   
   virtual void take_damage();

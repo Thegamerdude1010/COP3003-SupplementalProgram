@@ -1,17 +1,9 @@
-/** @file TextRPG_Supplemental.cpp
-
- *  @brief Brief description of file.
-
+/** @file Character.cpp
  *
-
- *  Longer description of file.
-
+ *  @brief File where character methods are defined.
  *
-
  *  @author Jacob Holmes
-
  *  @bug No known bugs.
-
  */
 
 #include "Character.h"

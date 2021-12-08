@@ -1,24 +1,17 @@
 /** @file Enemy.h
-
- *  @brief Brief description of file.
-
  *
-
- *  Longer description of file.
-
+ *  @brief Header file for enemy class.
  *
-
  *  @author Jacob Holmes
-
  *  @bug No known bugs.
-
  */
 
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include "Character.h"
 #include <functional>
+
+#include "Character.h"
 
 class Enemy : public Character {
  private:
@@ -31,13 +24,13 @@ class Enemy : public Character {
  public:
   Enemy();
   Enemy(float h, int a, std::string n, std::string s);
-  
+
   auto getsound() -> std::string;
   auto get_attack() -> int;
 
   // Accepts a function as a parameter
-  void take_damage(float, float, std::function<float(float,float)>);
-  
+  void take_damage(float, float, std::function<float(float, float)>);
+
   void kill();
 };
 

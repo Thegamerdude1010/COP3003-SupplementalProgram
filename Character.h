@@ -1,12 +1,6 @@
 /** @file Character.h
 
- *  @brief Brief description of file.
-
- *
-
- *  Longer description of file.
-
- *
+ *  @brief Header file for Character class.
 
  *  @author Jacob Holmes
 

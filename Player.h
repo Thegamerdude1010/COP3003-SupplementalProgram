@@ -1,17 +1,9 @@
 /** @file Player.h
-
- *  @brief Brief description of file.
-
  *
-
- *  Longer description of file.
-
+ *  @brief Header file for player class.
  *
-
  *  @author Jacob Holmes
-
  *  @bug No known bugs.
-
  */
 
 #ifndef PLAYER_H
@@ -30,7 +22,6 @@ class Player : public Character {
 
   const float maxChargeAttack = 100.0F;
   const float startHealth = 10.0F;
-
 
  public:
   Player();

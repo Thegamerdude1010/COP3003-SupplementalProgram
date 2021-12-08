@@ -1,17 +1,9 @@
 /** @file Enemy.cpp
-
- *  @brief Brief description of file.
-
  *
-
- *  Longer description of file.
-
+ *  @brief File where enemy methods are defined.
  *
-
  *  @author Jacob Holmes
-
  *  @bug No known bugs.
-
  */
 
 #include "Enemy.h"

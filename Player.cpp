@@ -35,8 +35,8 @@ Player::Player() : battle_cry("*silence*"), attack(1) {  }
  *  @return The word void or a description of what is returned
  */
 Player::Player(std::string n, std::string s) {
-  Character::set_health(10);
-  attack = 5;
+  Character::set_health(startHealth);
+  attack = startAttack;
   Character::set_name(n);
   battle_cry = s;
 }
@@ -73,7 +73,7 @@ void Player::set_attack(float a) {
  *  @return The word void or a description of what is returned
  */
 void Player::take_damage(float a) {
-  float h;
+  float h = 0;
   h = Character::get_health();
   h -= a;
   Character::set_health(h);

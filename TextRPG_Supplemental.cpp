@@ -283,7 +283,7 @@ void encounter(Enemy enemy, Player &player) {
         std::cout << "You try and defend but you are not very good"
                   << std::endl;
         // https://appdividend.com/2019/07/15/type-conversion-in-cpp-tutorial-with-example/
-        if (enemy.get_attack() < player.get_health()) {
+        if (static_cast<float>(enemy.get_attack()) < player.get_health()) {
           player.take_damage(static_cast<float>(enemy.get_attack()));
         } else {
           player.take_damage(player.get_health());
@@ -432,7 +432,7 @@ void battle_cry(Player p) { std::cout << p.battle_cry << std::endl; }
 
 // This allows the user to set their own attack.
 void charge_attack(Player &player) {
-  float a;
+  float a = 0;
   std::cout << "Charge attack: Enter the amount to attack!" << std::endl;
 
   try {
@@ -458,17 +458,23 @@ void charge_attack(Player &player) {
 // Spawn an enemy. These functions are here so the code does not have to be
 // repeated.
 auto spawn_small_enemy() -> Enemy {
-  Enemy smallenemy(10.0F, 5, "Goblin", "RAHH!");
+  constexpr float health = 10.0F;
+  constexpr int attack = 5;
+  Enemy smallenemy(health, attack, "Goblin", "RAHH!");
   return smallenemy;
 }
 
 auto spawn_big_enemy() -> Enemy {
-  Enemy bigenemy(30.0F, 10, "Hobgoblin", "GHAAARRRRR!");
+  constexpr float health = 30.0F;
+  constexpr int attack = 10;
+  Enemy bigenemy(health, attack, "Hobgoblin", "GHAAARRRRR!");
   return bigenemy;
 }
 
 auto spawn_boss() -> Enemy {
-  Enemy bossenemy(100.0F, 20, "Goblin King", "ROOOAAAAAARRR!");
+  constexpr float health = 100.0F;
+  constexpr int attack = 20;
+  Enemy bossenemy(health, attack, "Goblin King", "ROOOAAAAAARRR!");
   return bossenemy;
 }
 

@@ -26,8 +26,11 @@ class Player : public Character {
 
   // The player will have an attack with a decimal so I use float.
   float attack;
+  const float startAttack = 5.0F;
 
-  float maxChargeAttack = 100.0f;
+  const float maxChargeAttack = 100.0F;
+  const float startHealth = 10.0F;
+
 
  public:
   Player();

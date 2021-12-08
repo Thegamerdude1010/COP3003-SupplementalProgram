@@ -14,7 +14,10 @@
 
  */
 
-#pragma once
+// ifndef gotten from professor
+#ifndef CHARACTER_H
+#define CHARACTER_H
+
 #include <iostream>
 #include <string>
 
@@ -42,3 +45,5 @@ class Character {
   virtual void take_damage();
   virtual void kill();
 };
+
+#endif

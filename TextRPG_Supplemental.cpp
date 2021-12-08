@@ -48,6 +48,15 @@ void run_game();
  *  @param One for each parameter with the name and a description
  *  @return The word void or a description of what is returned
  */
+void start_game();
+
+/** @brief Short description of function.
+ *
+ *  Longer description of function.
+ *
+ *  @param One for each parameter with the name and a description
+ *  @return The word void or a description of what is returned
+ */
 void battle_cry(Player p);
 
 /** @brief Short description of function.
@@ -131,6 +140,11 @@ float damage(float h, float a);
  *  @return The word void or a description of what is returned
  */
 int main() {
+  start_game();
+  return 0;
+}
+
+void start_game() {
   std::cout << "Do you want to play." << std::endl;
   std::cout << "0: Play\n1: Exit" << std::endl;
   int option = -1;
@@ -155,7 +169,6 @@ int main() {
         input_test(option);
     }
   }
-  return 0;
 }
 
 // Function that runs the game.
@@ -270,7 +283,12 @@ void encounter(Enemy enemy, Player &player) {
         std::cout << "You try and defend but you are not very good"
                   << std::endl;
         // https://appdividend.com/2019/07/15/type-conversion-in-cpp-tutorial-with-example/
-        player.take_damage(static_cast<float>(enemy.get_attack()));
+        if (enemy.get_attack() < player.get_health()) {
+          player.take_damage(static_cast<float>(enemy.get_attack()));
+        } else {
+          player.take_damage(player.get_health());
+        }
+
         std::cout << "You took " << enemy.get_attack()
                   << " damage. You now have " << player.get_health()
                   << " health." << std::endl;
@@ -300,8 +318,8 @@ void encounter(Enemy enemy, Player &player) {
     player.set_attack(newAttack);
     player.set_health(newHealth);
     std::cout << "\n"
-         << player.get_name() << ":\n"
-         << "Health: " << player.get_health()
+              << player.get_name() << ":\n"
+              << "Health: " << player.get_health()
               << ", Attack: " << player.get_attack() << std::endl;
   } else {
     std::cout << "Oh no! You died." << std::endl;
@@ -324,7 +342,7 @@ void final_encounter(Enemy enemy, Player &player) {
         std::cout << "You succsesfully attacked the enemy" << std::endl;
         enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
         std::cout << "You did " << player.get_attack()
-             << " damage. The enemy now has " << enemy.get_health()
+                  << " damage. The enemy now has " << enemy.get_health()
                   << " health." << std::endl;
         if (enemy.get_health() < 1) {
           alive = false;
@@ -356,7 +374,7 @@ void final_encounter(Enemy enemy, Player &player) {
         // int, which is caught here. This demonstrates exception handling.
         catch (int) {
           std::cout << "Uh oh! Your attack was to powerful and you blew up the "
-                  "universe!"
+                       "universe!"
                     << std::endl;
           player.set_health(0);
           return;
@@ -367,7 +385,7 @@ void final_encounter(Enemy enemy, Player &player) {
           enemy.set_health(0);
         }
         std::cout << "You did " << player.get_attack()
-             << " damage. The enemy now has " << enemy.get_health()
+                  << " damage. The enemy now has " << enemy.get_health()
                   << " health." << std::endl;
         if (enemy.get_health() < 1) {
           alive = false;
@@ -422,7 +440,7 @@ void charge_attack(Player &player) {
     // Source:
     // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
     if (std::cin.fail()) {
-      std::cin.clear();           // clears cin
+      std::cin.clear();                // clears cin
       std::cin.ignore(INT_MAX, '\n');  // ignores input
       throw std::string("NOT AN INTEGER");
     }
@@ -464,7 +482,7 @@ void input_test(int &option) {
     // Source:
     // https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
     if (std::cin.fail()) {
-      std::cin.clear();           // clears cin
+      std::cin.clear();                // clears cin
       std::cin.ignore(INT_MAX, '\n');  // ignores input
       option = -1;
       constexpr double d = 1.1;

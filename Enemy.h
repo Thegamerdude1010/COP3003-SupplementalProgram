@@ -14,7 +14,9 @@
 
  */
 
-#pragma once
+#ifndef ENEMY_H
+#define ENEMY_H
+
 #include "Character.h"
 #include <functional>
 
@@ -38,3 +40,5 @@ class Enemy : public Character {
   
   void kill();
 };
+
+#endif

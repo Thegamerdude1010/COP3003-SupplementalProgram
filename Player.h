@@ -11,6 +11,9 @@
 
 #include "Character.h"
 
+/**
+ *This class is a subclass of character, meeting LO2.
+ */
 class Player : public Character {
  private:
   // Private because nothing else should access it.
@@ -24,6 +27,9 @@ class Player : public Character {
   const float startHealth = 10.0F;
 
  public:
+  /**
+   * @brief This shows LO1b
+  */
   Player();
   Player(std::string n, std::string s);
 

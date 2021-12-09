@@ -1,11 +1,9 @@
 /** @file Character.h
-
- *  @brief Header file for Character class.
-
+ *
+ *  @brief Header file for Character class. This file meets LO1 and LO1a.
+ * 
  *  @author Jacob Holmes
-
  *  @bug No known bugs.
-
  */
 
 // ifndef gotten from professor
@@ -35,7 +33,6 @@ class Character {
   void set_health(float h);
   void set_name(std::string n);
 
-  
   virtual void take_damage();
   virtual void kill();
 };

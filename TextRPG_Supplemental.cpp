@@ -1,18 +1,13 @@
 /** @file TextRPG_Supplemental.cpp
-
+ *
  *  @brief Main file of the project.
-
  *
-
  *  This is the main file of the project. It holds the main function, and the
- functions that run the game. Most of the code is included in this file.
-
+ functions that run the game. Most of the code is included in this file. LO4 and
+ LO5 are included in the README.
  *
-
  *  @author Jacob Holmes
-
  *  @bug No known bugs.
-
  */
 
 #include <array>
@@ -28,7 +23,7 @@
  *  When someone enters something, it may be wrong. This function tests if a
  * person enters an int. If they don't, it throws an exception. This allows the
  * program to ask for more input without crashing. It also demonstrates
- * exception handling.
+ * exception handling. it is defined on starting on line 484.
  *
  *  @param int &option; passing an int by reference allows me to test input and
  * send the input back
@@ -413,7 +408,13 @@ void final_encounter(Enemy enemy, Player &player) {
   }
 }
 
-// Shows Polymorphism and Iterators on aggregates
+
+
+
+
+/**
+ * @brief Shows Polymorphism and Iterators on aggregates. LO7 & LO3.
+ */
 void end_game() {
   // https://www.codesdope.com/cpp-stdarray/
   // The magic number warning is left because I want 10 and only 10 of each

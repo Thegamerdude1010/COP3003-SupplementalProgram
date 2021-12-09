@@ -1,6 +1,8 @@
 /** @file Character.cpp
  *
  *  @brief File where character methods are defined.
+ * 
+ * This file completes the requirements for LO1a.
  *
  *  @author Jacob Holmes
  *  @bug No known bugs.
@@ -10,13 +12,11 @@
 
 /** @brief Short description of function.
  *
- *  Longer description of function.
+ *  Longer description of function. LO1c
  *
  *  @param One for each parameter with the name and a description
  *  @return The word void or a description of what is returned
  */
-// This is called an initialization list. In this case, it is included as part
-// of the default constructor.
 Character::Character() : health(healthDefault), name("NoName") {}
 
 /** @brief Short description of function.

@@ -10,7 +10,7 @@
 
 /** @brief Short description of function.
  *
- *  Longer description of function.
+ *  Longer description of function. LO1b
  *
  *  @param One for each parameter with the name and a description
  *  @return The word void or a description of what is returned
@@ -21,7 +21,7 @@ Player::Player() : battle_cry("*silence*"), attack(1) {}
 
 /** @brief Short description of function.
  *
- *  Longer description of function.
+ *  Longer description of function. LO1b
  *
  *  @param One for each parameter with the name and a description
  *  @return The word void or a description of what is returned

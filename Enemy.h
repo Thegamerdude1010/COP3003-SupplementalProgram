@@ -31,7 +31,7 @@ class Enemy : public Character {
   // Accepts a function as a parameter
   void take_damage(float, float, std::function<float(float, float)>);
 
-  void kill();
+  void kill() override;
 };
 
 #endif

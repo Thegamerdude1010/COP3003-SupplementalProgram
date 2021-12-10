@@ -2,7 +2,7 @@ var class_character =
 [
     [ "~Character", "class_character.html#a9e9be564d05ded80962b2045aa70b3fc", null ],
     [ "Character", "class_character.html#adc27bdd255876169bad2ed0bae0cffb5", null ],
-    [ "get_health", "class_character.html#a7ba65bd43c359cc887acf3da90fb838a", null ],
+    [ "get_health", "class_character.html#a784f26a3360b7530a979bc8f35d15572", null ],
     [ "get_name", "class_character.html#af9e2d3ae5beb56e607d138faf8fc5573", null ],
     [ "kill", "class_character.html#a5b708af3b8b185fd694722c7a566a4a7", null ],
     [ "set_health", "class_character.html#a59318331cdcd098dac17e5b5f2f72ab3", null ],

@@ -11,5 +11,6 @@ var _text_r_p_g___supplemental_8cpp =
     [ "run_game", "_text_r_p_g___supplemental_8cpp.html#a6ff802f40779291bfa8d943c1fc0cf97", null ],
     [ "spawn_big_enemy", "_text_r_p_g___supplemental_8cpp.html#ac308f51bba99e8d4944dcbfeef55547d", null ],
     [ "spawn_boss", "_text_r_p_g___supplemental_8cpp.html#a80b491a2b0cfcd4fc42d06199ba8aec6", null ],
-    [ "spawn_small_enemy", "_text_r_p_g___supplemental_8cpp.html#aff3c10f1b04d6608558e2e4d4f920aaf", null ]
+    [ "spawn_small_enemy", "_text_r_p_g___supplemental_8cpp.html#aff3c10f1b04d6608558e2e4d4f920aaf", null ],
+    [ "start_game", "_text_r_p_g___supplemental_8cpp.html#a671b58f5509a3a9fa692bacccfc32cc9", null ]
 ];

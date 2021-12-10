@@ -13,6 +13,12 @@
 
 #include "Character.h"
 
+/**
+ * @brief This class is a subclass of character, meeting LO2.
+ *
+ * (LO2a) The Enemy class inherits the Character class publicly for simplicity.
+ * Only public members are visible.
+ */
 class Enemy : public Character {
  private:
   // Private because nothing else shoud access it.
@@ -28,7 +34,10 @@ class Enemy : public Character {
   auto getsound() -> std::string;
   auto get_attack() const -> int;
 
-  // Accepts a function as a parameter
+
+  /**
+  * @brief LO7, accepts function as parameter  
+  */
   void take_damage(float, float, std::function<float(float, float)>);
 
   void kill() override;

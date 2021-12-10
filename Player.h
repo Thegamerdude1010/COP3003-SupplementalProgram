@@ -12,7 +12,10 @@
 #include "Character.h"
 
 /**
- *This class is a subclass of character, meeting LO2.
+ * @brief This class is a subclass of character, meeting LO2.
+ *
+ * (LO2a) The Player class inherits the Character class publicly for simplicity.
+ * Only public members are visible.
  */
 class Player : public Character {
  private:
@@ -29,7 +32,7 @@ class Player : public Character {
  public:
   /**
    * @brief This shows LO1b
-  */
+   */
   Player();
   Player(std::string n, std::string s);
 

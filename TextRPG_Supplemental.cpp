@@ -23,7 +23,7 @@
  *  When someone enters something, it may be wrong. This function tests if a
  * person enters an int. If they don't, it throws an exception. This allows the
  * program to ask for more input without crashing. It also demonstrates
- * exception handling. it is defined on starting on line 484.
+ * exception handling.
  *
  *  @param int &option; passing an int by reference allows me to test input and
  * send the input back
@@ -31,112 +31,126 @@
  */
 void input_test(int &option);
 
-/** @brief Short description of function.
+/** @brief This function runs the game.
  *
- *  Longer description of function.
+ *  This function is the main part of the game. It handles the main logic and
+ * pathways for the game.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return void
  */
 void run_game();
 
-/** @brief Short description of function.
+/** @brief Function for main menu.
  *
- *  Longer description of function.
+ *  This function handles the main menu. It allows the user to start a game or
+ * exit the program. It repeates until the user exits the program.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return void
  */
 void start_game();
 
-/** @brief Short description of function.
+/** @brief Gets the player battle cry.
  *
- *  Longer description of function.
+ *  This function gets the players battle cry. It is a friend function of the
+ * Player class.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @param Player p; an object of class player is passed in order to get the
+ * battle cry.
+ *  @return void
  */
 void battle_cry(Player p);
 
-/** @brief Short description of function.
+/** @brief Allows user to enter a charge attack.
  *
- *  Longer description of function.
+ *  This function allows the user to enter their own attack number. It uses the
+ * Player classes set_attack function.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @param Player player; A Player object is passed by references so the attack
+ * can be modified.
+ *  @return void
  */
 void charge_attack(Player &player);
 
-/** @brief Short description of function.
+/** @brief Spawns a small enemy.
  *
- *  Longer description of function.
+ *  This function is included to shorten code. I do not have to create an object
+ * everytime I need to, I just call this function. Uses trailing return type.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return Return an object of class Enemy.
  */
 // https://www.fluentcpp.com/2021/04/16/trailing-return-types/
 auto spawn_small_enemy() -> Enemy;
 
-/** @brief Short description of function.
+/** @brief Spawns a big enemy.
  *
- *  Longer description of function.
+ *  This function is included to shorten code. I do not have to create an object
+ * everytime I need to, I just call this function. Uses trailing return type.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return An object of class Enemy
  */
 auto spawn_big_enemy() -> Enemy;
 
-/** @brief Short description of function.
+/** @brief Spawns a boss.
  *
- *  Longer description of function.
+ *  This function is included to shorten code. I do not have to create an object
+ * everytime I need to, I just call this function. Uses trailing return type.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return An object of class Enemy
  */
 auto spawn_boss() -> Enemy;
 
-/** @brief Short description of function.
+/** @brief Handles main encounters.
  *
- *  Longer description of function.
+ *  This function handles the main encounters. Users have the ability to attack
+ * or defend. If they do not enter a correct input they die. Passing player by
+ * reference lets us adjust the values of our original object. The enemy can be
+ * passed by value because either the enemy dies or the game ends, so we don't
+ * have to modify the enemy.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @param Enemy enemy; object of class Enemy
+ *  @param Player player; Object of class player passed by reference
+ *  @return void
  */
 void encounter(Enemy enemy, Player &player);
 
-/** @brief Short description of function.
+/** @brief Handles the final encounter.
  *
- *  Longer description of function.
+ *  Handles the final encounter. The user gets three option, adding a charge
+ * attack. The game ends when the enemy in this encounter is defeated.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @param Enemy enemy; object of class Enemy
+ *  @param Player player; Object of class player passed by reference
+ *  @return void
  */
 void final_encounter(Enemy enemy, Player &player);
 
-/** @brief Short description of function.
+/** @brief Plays when the user beats the game.
  *
- *  Longer description of function.
+ *  This function was added to demonstrate iterators on aggregates and dynamic
+ * dispatch (LO7 & LO3). It just displays some simple text at the end of the
+ * game.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return void
  */
 void end_game();
 
-/** @brief Short description of function.
+/** @brief Calculates damage.
  *
- *  Longer description of function.
+ *  Simple function that calculates damage to demonstrate passin functions as
+ * arguments (LO7).
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @param float h; health variable
+ *  @param float a; attack variable
+ *  @return Returns a float, the result of h-a
  */
 float damage(float h, float a);
 
-/** @brief Short description of function.
+/** @brief Main function.
  *
- *  Longer description of function.
+ *  This is the main function. All programs need a main function. It simply
+ * calls the start_game function.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return int; main is supposed to return an int.
  */
 int main() {
   start_game();
@@ -170,7 +184,6 @@ void start_game() {
   }
 }
 
-// Function that runs the game.
 void run_game() {
   std::string name;
   std::string sound;
@@ -250,10 +263,6 @@ void run_game() {
   }
 }
 
-// Passing player by reference lets us adjust the values of our original object.
-// The enemy can be passed by value because either the enemy dies or the game
-// ends, so we don't have to modify the enemy.
-// This is the general encounter.
 void encounter(Enemy enemy, Player &player) {
   std::cout << "A " << enemy.get_name() << " appeared!" << std::endl;
   std::cout << "What will you do?" << std::endl;
@@ -325,7 +334,6 @@ void encounter(Enemy enemy, Player &player) {
   }
 }
 
-// This is the final encounter.
 void final_encounter(Enemy enemy, Player &player) {
   std::cout << "The " << enemy.get_name() << " appeared!" << std::endl;
   std::cout << "What will you do?" << std::endl;
@@ -408,10 +416,6 @@ void final_encounter(Enemy enemy, Player &player) {
   }
 }
 
-
-
-
-
 /**
  * @brief Shows Polymorphism and Iterators on aggregates. LO7 & LO3.
  */
@@ -431,11 +435,8 @@ void end_game() {
   }
 }
 
-// Demonstrating a friend function. Friend functions are allowed to access
-// private members of a class.
 void battle_cry(Player p) { std::cout << p.battle_cry << std::endl; }
 
-// This allows the user to set their own attack.
 void charge_attack(Player &player) {
   float a = 0;
   std::cout << "Charge attack: Enter the amount to attack!" << std::endl;
@@ -460,8 +461,6 @@ void charge_attack(Player &player) {
   player.set_attack(a);
 }
 
-// Spawn an enemy. These functions are here so the code does not have to be
-// repeated.
 auto spawn_small_enemy() -> Enemy {
   constexpr float health = 10.0F;
   constexpr int attack = 5;
@@ -483,10 +482,8 @@ auto spawn_boss() -> Enemy {
   return bossenemy;
 }
 
-// Function passed as parameter to demonstrate the concept.
 float damage(float h, float a) { return h - a; }
 
-// Demonstrates exception handling. Source included.
 void input_test(int &option) {
   try {
     std::cin >> option;

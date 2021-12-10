@@ -1,0 +1,38 @@
+\hypertarget{_character_8h_source}{}\doxysection{Character.\+h}
+\label{_character_8h_source}\index{C:/Users/jakeh/OneDrive/SchoolWork/COP3003/VisualStudioProjects/TextRPG\_Supplemental/Character.h@{C:/Users/jakeh/OneDrive/SchoolWork/COP3003/VisualStudioProjects/TextRPG\_Supplemental/Character.h}}
+\mbox{\hyperlink{_character_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef CHARACTER\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define CHARACTER\_H}}
+\DoxyCodeLine{3 \textcolor{comment}{// ifndef gotten from professor}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{class_character}{Character}} \{}
+\DoxyCodeLine{17   \textcolor{comment}{// All characters will have a health stat and a name. They are set}}
+\DoxyCodeLine{18   \textcolor{comment}{// as protected so subclasses can use them, but other functions or classes can}}
+\DoxyCodeLine{19   \textcolor{comment}{// not.}}
+\DoxyCodeLine{20  \textcolor{keyword}{private}:}
+\DoxyCodeLine{21   \textcolor{keywordtype}{float} healthDefault = 10;}
+\DoxyCodeLine{22   \textcolor{keywordtype}{float} health;}
+\DoxyCodeLine{23   std::string name;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25  \textcolor{keyword}{protected}:}
+\DoxyCodeLine{26   \mbox{\hyperlink{class_character_a9e9be564d05ded80962b2045aa70b3fc}{\string~Character}}();}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28  \textcolor{keyword}{public}:}
+\DoxyCodeLine{29   \mbox{\hyperlink{class_character_adc27bdd255876169bad2ed0bae0cffb5}{Character}}();}
+\DoxyCodeLine{30   \textcolor{keyword}{auto} \mbox{\hyperlink{class_character_a784f26a3360b7530a979bc8f35d15572}{get\_health}}() const -\/> \textcolor{keywordtype}{float};}
+\DoxyCodeLine{31   auto \mbox{\hyperlink{class_character_af9e2d3ae5beb56e607d138faf8fc5573}{get\_name}}() -\/> std::\textcolor{keywordtype}{string};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_character_a59318331cdcd098dac17e5b5f2f72ab3}{set\_health}}(\textcolor{keywordtype}{float} h);}
+\DoxyCodeLine{34   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_character_a5bce1d1029bc37e6b3a31e182747a630}{set\_name}}(std::\textcolor{keywordtype}{string} n);}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36   virtual \textcolor{keywordtype}{void} \mbox{\hyperlink{class_character_a6a06c51c81fb8561842972af42d9a362}{take\_damage}}();}
+\DoxyCodeLine{37   virtual \textcolor{keywordtype}{void} \mbox{\hyperlink{class_character_a5b708af3b8b185fd694722c7a566a4a7}{kill}}();}
+\DoxyCodeLine{38 \};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,3 +1,6 @@
+#ifndef ENEMY_H
+#define ENEMY_H
+
 /** @file Enemy.h
  *
  *  @brief Header file for enemy class.
@@ -5,9 +8,6 @@
  *  @author Jacob Holmes
  *  @bug No known bugs.
  */
-
-#ifndef ENEMY_H
-#define ENEMY_H
 
 #include <functional>
 
@@ -34,10 +34,9 @@ class Enemy : public Character {
   auto getsound() -> std::string;
   auto get_attack() const -> int;
 
-
   /**
-  * @brief LO7, accepts function as parameter  
-  */
+   * @brief LO7, accepts function as parameter
+   */
   void take_damage(float, float, std::function<float(float, float)>);
 
   void kill() override;

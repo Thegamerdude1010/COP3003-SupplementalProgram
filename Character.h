@@ -1,14 +1,14 @@
+#ifndef CHARACTER_H
+#define CHARACTER_H
+// ifndef gotten from professor
+
 /** @file Character.h
  *
  *  @brief Header file for Character class. This file meets LO1 and LO1a.
- * 
+ *
  *  @author Jacob Holmes
  *  @bug No known bugs.
  */
-
-// ifndef gotten from professor
-#ifndef CHARACTER_H
-#define CHARACTER_H
 
 #include <iostream>
 #include <string>

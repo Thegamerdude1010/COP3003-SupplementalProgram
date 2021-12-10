@@ -1,3 +1,7 @@
+#ifndef PLAYER_H
+#define PLAYER_H
+
+#include "Character.h"
 /** @file Player.h
  *
  *  @brief Header file for player class.
@@ -6,10 +10,6 @@
  *  @bug No known bugs.
  */
 
-#ifndef PLAYER_H
-#define PLAYER_H
-
-#include "Character.h"
 
 /**
  * @brief This class is a subclass of character, meeting LO2.

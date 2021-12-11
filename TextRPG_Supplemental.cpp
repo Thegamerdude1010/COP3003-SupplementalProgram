@@ -143,7 +143,7 @@ void end_game();
  *  @param float a; attack variable
  *  @return Returns a float, the result of h-a
  */
-float damage(float h, float a);
+constexpr float damage(float h, float a);
 
 /** @brief Main function.
  *
@@ -418,13 +418,16 @@ void final_encounter(Enemy enemy, Player &player) {
 
 /**
  * @brief Shows Polymorphism and Iterators on aggregates. LO7 & LO3.
+ *
+ * I could not figure out how to clear the warnings for these.
+ *
  */
 void end_game() {
   // https://www.codesdope.com/cpp-stdarray/
   // The magic number warning is left because I want 10 and only 10 of each
   // object.
-  std::array<Character *, 10> character;
-  std::array<Enemy *, 10> enemy;
+  std::array<Character *, 10> character{};
+  std::array<Enemy *, 10> enemy{};
 
   for (int i = 0; i < 10; i++) {
     character[i] = enemy[i] = new Enemy(10, 4, "Enemy", "AAAA");
@@ -482,7 +485,7 @@ auto spawn_boss() -> Enemy {
   return bossenemy;
 }
 
-float damage(float h, float a) { return h - a; }
+constexpr float damage(float h, float a) { return h - a; }
 
 void input_test(int &option) {
   try {

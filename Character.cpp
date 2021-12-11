@@ -1,7 +1,7 @@
 /** @file Character.cpp
  *
  *  @brief File where character methods are defined.
- * 
+ *
  * This file completes the requirements for LO1a.
  *
  *  @author Jacob Holmes
@@ -10,78 +10,72 @@
 
 #include "Character.h"
 
-/** @brief Short description of function.
+/** @brief Default Constructor.
  *
- *  Longer description of function. LO1c
+ *  Default constructor for the Character class. Uses an initialization list
+ * (LO1c).
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return Constructors do not return anything.
  */
 Character::Character() : health(healthDefault), name("NoName") {}
 
-/** @brief Short description of function.
+/** @brief Default destructor.
  *
- *  Longer description of function.
+ *  This destructor was added to clear warnings in the code.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return Destructors do not return anything.
  */
-// Destructor was created to clear warnings.
 Character::~Character() = default;
 
-/** @brief Short description of function.
+/** @brief Gets character health.
  *
- *  Longer description of function.
- *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return float; health is type float.
  */
 auto Character::get_health() const -> float { return health; }
 
-/** @brief Short description of function.
+/** @brief Gets character name.
  *
- *  Longer description of function.
- *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return string; name is of type string.
  */
 auto Character::get_name() -> std::string { return name; }
 
-/** @brief Short description of function.
+/** @brief Sets character health.
  *
- *  Longer description of function.
+ *  This function sets the health of a character. This allows us to change the
+ * health while maintaining variables as private.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @param float h; a variable for the new health.
+ *  @return void
  */
 void Character::set_health(float h) { health = h; }
 
-/** @brief Short description of function.
+/** @brief Sets character name.
  *
- *  Longer description of function.
+ *  In the event that a character needs its name changed, this function could be
+ * used. I did not use it in the main game, but it can be used.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @param string n; a string with the new name.
+ *  @return void
  */
 void Character::set_name(std::string n) { name = n; }
 
-/** @brief Short description of function.
+/** @brief Deals damage.
  *
- *  Longer description of function.
+ *  This is a virtual function that allows users to deal damage. It is
+ * overridden in the subclasses, but it is defined here in case something goes
+ * wrong.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return void
  */
-// This method will take 1 off of health just incase the method is not
-// overridden.
 void Character::take_damage() { health -= 1; }
 
-/** @brief Short description of function.
+/** @brief SSimple function that prints to the console.
  *
- *  Longer description of function.
+ *  This function was added to demonstrate polymorphism. The subclass Enemy
+ * overrides the function, which is then used in the main file to practice
+ * polymorphism.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return void
  */
 void Character::kill() {
   std::cout << "All the characters are dying" << std::endl;

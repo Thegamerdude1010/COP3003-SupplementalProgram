@@ -8,23 +8,25 @@
 
 #include "Player.h"
 
-/** @brief Short description of function.
+/** @brief Default constructor.
  *
- *  Longer description of function. LO1b
+ *  Default constructor for the player class. It is overloaded (LO1b). It also
+ * uses an initialization list (LO1c).
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return Constructors do not return anything
  */
 // This is called an initialization list. In this case, it is included as part
 // of the default constructor.
 Player::Player() : battle_cry("*silence*"), attack(1) {}
 
-/** @brief Short description of function.
+/** @brief Overloaded Constructor.
  *
- *  Longer description of function. LO1b
+ *  This is another constructor that is overloaded (LO1b). It sets the player
+ * specifics at creation of the object.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @param string n; string for the name of the player
+ *  @param string s; string for the battle cry
+ *  @return Constructors do not return anything
  */
 Player::Player(std::string n, std::string s) {
   Character::set_health(startHealth);
@@ -33,21 +35,20 @@ Player::Player(std::string n, std::string s) {
   battle_cry = s;
 }
 
-/** @brief Short description of function.
+/** @brief Gets the player attack.
  *
- *  Longer description of function.
- *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return float; attack is a float.
  */
 auto Player::get_attack() const -> float { return attack; }
 
-/** @brief Short description of function.
+/** @brief Sets player attack.
  *
- *  Longer description of function.
+ *  This allows us to change the player's attack. It is used in the main program
+ * to set a charge attack. If the user enters more than the maxChargeAttack,
+ * which is 100, it throws an int that is caught in the main file.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @param float a; new attack value
+ *  @return void
  */
 void Player::set_attack(float a) {
   if (a <= maxChargeAttack && a >= 0) {
@@ -57,12 +58,13 @@ void Player::set_attack(float a) {
   }
 }
 
-/** @brief Short description of function.
+/** @brief Lets player take damage.
  *
- *  Longer description of function.
+ *  This function allows the player to take damage. Takes the attack value off
+ * of the health.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @param Ofloat a; attack of the enemy
+ *  @return void
  */
 void Player::take_damage(float a) {
   float h = 0;

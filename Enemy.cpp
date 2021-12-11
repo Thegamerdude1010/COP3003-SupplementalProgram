@@ -8,23 +8,25 @@
 
 #include "Enemy.h"
 
-/** @brief Short description of function.
+/** @brief Default Constructor.
  *
- *  Longer description of function.
+ *  Default constructor for the enemy class. It is overloaded (LO1b). It also
+ * uses an initialization list (LO1c).
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return Constructors do not return anything.
  */
-// This is called an initialization list. In this case, it is included as part
-// of the default constructor.
 Enemy::Enemy() : sound("*silence*"), attack(1) {}
 
-/** @brief Short description of function.
+/** @brief Overloaded constructor.
  *
- *  Longer description of function.
+ *  This is another constructor that is overloaded (LO1b). It sets the enemy
+ * specifics at creation of the object.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @param float h; variable for enemy health
+ *  @param int a; variable for enemy attack
+ *  @param string n; enemy name
+ *  @param string s; enemy sound
+ *  @return Constructors do not return anything
  */
 Enemy::Enemy(float h, int a, std::string n, std::string s) {
   Character::set_health(h);
@@ -33,30 +35,29 @@ Enemy::Enemy(float h, int a, std::string n, std::string s) {
   sound = s;
 }
 
-/** @brief Short description of function.
+/** @brief Gets enemy sound.
  *
- *  Longer description of function.
- *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return string; sound is a string.
  */
 auto Enemy::getsound() -> std::string { return sound; }
 
-/** @brief Short description of function.
+/** @brief Gets enemy attack.
  *
- *  Longer description of function.
- *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return int; enemy's attack is an int.
  */
 auto Enemy::get_attack() const -> int { return attack; }
 
-/** @brief Short description of function.
+/** @brief Damages the enemy.
  *
- *  Longer description of function.
+ *  LThis function allows us to damage the enemy. It also takes a function as an
+ * argument (LO7). Source:
+ * https://www.geeksforgeeks.org/passing-a-function-as-a-parameter-in-cpp/
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @param float h; health of the enemy.
+ *  @param float a; attack to be subtracted from health.
+ *  @param function dmg; a function for subtracting attack from health
+ *
+ *  @return void
  */
 void Enemy::take_damage(float h, float a,
                         std::function<float(float, float)> dmg) {
@@ -65,12 +66,12 @@ void Enemy::take_damage(float h, float a,
   Character::set_health(tempHealth);
 }
 
-/** @brief Short description of function.
+/** @brief Simple function to demonstrate polymorphism.
  *
- *  Longer description of function.
+ *  This function demonstrates polymorphism (LO3). It overrides Characters kill
+ * function. In the main file, it is called using the base class.
  *
- *  @param One for each parameter with the name and a description
- *  @return The word void or a description of what is returned
+ *  @return void
  */
 void Enemy::kill() {
   std::cout << "All the enemies are dying! " << sound << std::endl;

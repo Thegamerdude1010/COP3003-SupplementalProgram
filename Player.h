@@ -10,7 +10,6 @@
  *  @bug No known bugs.
  */
 
-
 /**
  * @brief This class is a subclass of character, meeting LO2.
  *
@@ -43,9 +42,13 @@ class Player : public Character {
 
   void set_attack(float a);
 
-  // This is a friend class. Designating a function as friend allows it to use
-  // the private members of a class. In this case, it takes a player object and
-  // prints the sound.
+  /**
+   * @brief This is a friend class.
+   * 
+   * Designating a function as friend allows it to use the private members of a
+   * class. In this case, it takes a player object and prints the sound.
+   * 
+   */
   friend void battle_cry(Player);
 
   void take_damage(float a);

@@ -2,12 +2,13 @@
 This is a simple text based RPG provided as a supplement to the main project listed below. Its purpose is to demonstrate the various requirements that cannot be demonstrated in the original project.
 
 ## Demonstration
+[Demonstration](https://youtu.be/IaJcbSEh8xc)
 
 ## Documentation
 [Doxygen](https://thegamerdude1010.github.io/COP3003-SupplementalProgram/html/)
 
 ## Diagrams
-![Class Diagram](ClassDiagramPic.png)
+![Class Diagram](docs/ClassDiagramPic.png)
 
 ## Getting Started
 To run the program, download the .zip file, unzip it, and open the .sln file in Visual Studio. Once it is open, press F5 to run with the debugger or ctrl+F5 to run without the debugger.

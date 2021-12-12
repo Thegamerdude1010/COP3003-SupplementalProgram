@@ -2,7 +2,7 @@ var _text_r_p_g___supplemental_8cpp =
 [
     [ "battle_cry", "_text_r_p_g___supplemental_8cpp.html#a43752dc8b928c920b75ada1f2fd99598", null ],
     [ "charge_attack", "_text_r_p_g___supplemental_8cpp.html#a084619cf4651a5d4a2a6387e7b063e89", null ],
-    [ "damage", "_text_r_p_g___supplemental_8cpp.html#af527b6194e6de1fda3532fb997f8c939", null ],
+    [ "damage", "_text_r_p_g___supplemental_8cpp.html#aba2d5fe7d03a2d749a9a872f7520eaab", null ],
     [ "encounter", "_text_r_p_g___supplemental_8cpp.html#a52d24c432c676fcfebe791fd4a2e5c20", null ],
     [ "end_game", "_text_r_p_g___supplemental_8cpp.html#a4202fa5c5191c7e387d7570da6c8cd8c", null ],
     [ "final_encounter", "_text_r_p_g___supplemental_8cpp.html#ad0a618c8c5f8cba3d5eacffeaa601ea6", null ],

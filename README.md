@@ -2,7 +2,7 @@
 This is a simple text based RPG provided as a supplement to the main project listed below. Its purpose is to demonstrate the various requirements that cannot be demonstrated in the original project.
 
 ## Demonstration
-[Demonstration](https://youtu.be/IaJcbSEh8xc)
+[Watch this video for demonstration of the game.](https://youtu.be/IaJcbSEh8xc)
 
 ## Documentation
 [Doxygen](https://thegamerdude1010.github.io/COP3003-SupplementalProgram/html/)

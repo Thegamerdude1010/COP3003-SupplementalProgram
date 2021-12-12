@@ -11,12 +11,12 @@
 /** @brief Default constructor.
  *
  *  Default constructor for the player class. It is overloaded (LO1b). It also
- * uses an initialization list (LO1c).
+ * uses an initialization list (LO1c). This constructor has the same issue as
+ * the constructor in Enemy.cpp, saying that the function should not be declared
+ * noexcept. I am leaving out the noexcept.
  *
  *  @return Constructors do not return anything
  */
-// This is called an initialization list. In this case, it is included as part
-// of the default constructor.
 Player::Player() : battle_cry("*silence*"), attack(1) {}
 
 /** @brief Overloaded Constructor.
@@ -39,7 +39,7 @@ Player::Player(std::string n, std::string s) {
  *
  *  @return float; attack is a float.
  */
-auto Player::get_attack() const -> float { return attack; }
+auto Player::get_attack() const noexcept -> float { return attack; }
 
 /** @brief Sets player attack.
  *
@@ -66,7 +66,7 @@ void Player::set_attack(float a) {
  *  @param Ofloat a; attack of the enemy
  *  @return void
  */
-void Player::take_damage(float a) {
+void Player::take_damage(float a) noexcept {
   float h = 0;
   h = Character::get_health();
   h -= a;

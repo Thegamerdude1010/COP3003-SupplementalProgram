@@ -38,7 +38,7 @@ class Player : public Character {
   // I removed this get function becuase the friend function does its job.
   // string getsound();
 
-  auto get_attack() const -> float;
+  auto get_attack() const noexcept -> float;
 
   void set_attack(float a);
 
@@ -51,7 +51,7 @@ class Player : public Character {
    */
   friend void battle_cry(Player);
 
-  void take_damage(float a);
+  void take_damage(float a) noexcept;
 };
 
 #endif

@@ -11,7 +11,9 @@
 /** @brief Default Constructor.
  *
  *  Default constructor for the enemy class. It is overloaded (LO1b). It also
- * uses an initialization list (LO1c).
+ * uses an initialization list (LO1c). When declaring the constructor as
+ * noexcept, a new warning appears stating that the "function calls 'allocator<char>'
+ * which may throw exceptions." I decided to not put the noexcept.
  *
  *  @return Constructors do not return anything.
  */
@@ -45,7 +47,7 @@ auto Enemy::getsound() -> std::string { return sound; }
  *
  *  @return int; enemy's attack is an int.
  */
-auto Enemy::get_attack() const -> int { return attack; }
+auto Enemy::get_attack() const noexcept -> int { return attack; }
 
 /** @brief Damages the enemy.
  *

@@ -31,8 +31,18 @@ class Enemy : public Character {
   Enemy();
   Enemy(float h, int a, std::string n, std::string s);
 
+  /** @brief Default destructor.
+   *
+   *  This destructor was added to clear warning C26436 in the code. Warning
+   * C26432 is left because trying to clear it causes errors like in
+   * Character.h.
+   *
+   *  @return Destructors do not return anything.
+   */
+  virtual ~Enemy() = default;
+
   auto getsound() -> std::string;
-  auto get_attack() const -> int;
+  auto get_attack() const noexcept -> int;
 
   /**
    * @brief LO7, accepts function as parameter

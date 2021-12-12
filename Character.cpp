@@ -13,7 +13,9 @@
 /** @brief Default Constructor.
  *
  *  Default constructor for the Character class. Uses an initialization list
- * (LO1c).
+ * (LO1c). This constructor the same issue as the others. When declaring it as
+ * noexcept, a new warning shows that I should not use noexcept. I am not using
+ * noexcept for the constructor.
  *
  *  @return Constructors do not return anything.
  */
@@ -21,7 +23,7 @@ Character::Character() : health(healthDefault), name("NoName") {}
 
 /** @brief Default destructor.
  *
- *  This destructor was added to clear warnings in the code.
+ *  This destructor was added to clear warning C26436 in the code.
  *
  *  @return Destructors do not return anything.
  */
@@ -31,7 +33,7 @@ Character::~Character() = default;
  *
  *  @return float; health is type float.
  */
-auto Character::get_health() const -> float { return health; }
+auto Character::get_health() const noexcept -> float { return health; }
 
 /** @brief Gets character name.
  *
@@ -47,7 +49,7 @@ auto Character::get_name() -> std::string { return name; }
  *  @param float h; a variable for the new health.
  *  @return void
  */
-void Character::set_health(float h) { health = h; }
+void Character::set_health(float h) noexcept { health = h; }
 
 /** @brief Sets character name.
  *
@@ -67,7 +69,7 @@ void Character::set_name(std::string n) { name = n; }
  *
  *  @return void
  */
-void Character::take_damage() { health -= 1; }
+void Character::take_damage() noexcept { health -= 1; }
 
 /** @brief SSimple function that prints to the console.
  *

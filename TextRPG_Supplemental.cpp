@@ -75,10 +75,12 @@ void charge_attack(Player &player);
  *
  *  This function is included to shorten code. I do not have to create an object
  * everytime I need to, I just call this function. Uses trailing return type.
+ * Source for trailing functions:
+ * https://www.fluentcpp.com/2021/04/16/trailing-return-types/
  *
  *  @return Return an object of class Enemy.
  */
-// https://www.fluentcpp.com/2021/04/16/trailing-return-types/
+//
 auto spawn_small_enemy() -> Enemy;
 
 /** @brief Spawns a big enemy.
@@ -137,22 +139,25 @@ void end_game();
 /** @brief Calculates damage.
  *
  *  Simple function that calculates damage to demonstrate passin functions as
- * arguments (LO7).
+ * arguments (LO7). Could not figure out how to clear warning C26497. Declaring
+ * the function const does not remove the warning and constexpr can not be used.
  *
  *  @param float h; health variable
  *  @param float a; attack variable
  *  @return Returns a float, the result of h-a
  */
-constexpr float damage(float h, float a);
+auto damage(float h, float a) noexcept -> float;
 
 /** @brief Main function.
  *
  *  This is the main function. All programs need a main function. It simply
- * calls the start_game function.
+ * calls the start_game function. For the bugprone-exception-escape error,
+ * trying to declare it noexcept leads to a different warning C26447. I do not
+ * know how to prevent main from throwing exceptions.
  *
  *  @return int; main is supposed to return an int.
  */
-int main() {
+auto main() -> int {
   start_game();
   return 0;
 }
@@ -419,21 +424,29 @@ void final_encounter(Enemy enemy, Player &player) {
 /**
  * @brief Shows Polymorphism and Iterators on aggregates. LO7 & LO3.
  *
- * I could not figure out how to clear the warnings for these.
+ * I could not figure out how to clear the warnings for these. Warning C26482 is
+ * left because I want to iterate through the array, which means I can not use a
+ * constant expression. When following the guide
+ * here(https://docs.microsoft.com/en-us/cpp/code-quality/c26446?view=msvc-170),
+ * the gsl library can not be found. Many of the warnings specify to use gsl but
+ * I can not.
  *
  */
 void end_game() {
   // https://www.codesdope.com/cpp-stdarray/
   // The magic number warning is left because I want 10 and only 10 of each
   // object.
-  std::array<Character *, 10> character{};
-  std::array<Enemy *, 10> enemy{};
+  constexpr int j = 10;
+  constexpr int h = 10;
+  constexpr int a = 4;
+  std::array<Character *, j> character{};
+  std::array<Enemy *, j> enemy{};
 
-  for (int i = 0; i < 10; i++) {
-    character[i] = enemy[i] = new Enemy(10, 4, "Enemy", "AAAA");
+  for (int i = 0; i < j; i++) {
+    character[i] = enemy[i] = new Enemy(h, a, "Enemy", "AAAA");
   }
 
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < j; i++) {
     character[i]->kill();
   }
 }
@@ -485,7 +498,7 @@ auto spawn_boss() -> Enemy {
   return bossenemy;
 }
 
-constexpr float damage(float h, float a) { return h - a; }
+auto damage(float h, float a) noexcept -> float { return h - a; }
 
 void input_test(int &option) {
   try {

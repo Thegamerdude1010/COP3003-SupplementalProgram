@@ -29,9 +29,6 @@ class Player : public Character {
   const float startHealth = 10.0F;
 
  public:
-  /**
-   * @brief This shows LO1b
-   */
   Player();
   Player(std::string n, std::string s);
 
@@ -43,11 +40,11 @@ class Player : public Character {
   void set_attack(float a);
 
   /**
-   * @brief This is a friend class.
-   * 
+   * @brief This is a friend function.
+   *
    * Designating a function as friend allows it to use the private members of a
    * class. In this case, it takes a player object and prints the sound.
-   * 
+   *
    */
   friend void battle_cry(Player);
 

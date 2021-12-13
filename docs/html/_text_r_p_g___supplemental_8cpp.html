@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -50,23 +46,6 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('_text_r_p_g___supplemental_8cpp.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -81,6 +60,11 @@ $(document).ready(function(){initNavTree('_text_r_p_g___supplemental_8cpp.html',
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="dir_e8c1eaa8ea5decfe9e5510b5b11182ba.html">jakeh</a></li><li class="navelem"><a class="el" href="dir_aef51b861493fac4a4eacd035fc3d2d2.html">OneDrive</a></li><li class="navelem"><a class="el" href="dir_977be78b74f52c1bc5dfac189f90521d.html">SchoolWork</a></li><li class="navelem"><a class="el" href="dir_03b7afccdfa6d89b3ac3f0d4cf388109.html">COP3003</a></li><li class="navelem"><a class="el" href="dir_a736c3fe8c5804e5008b7cf154da01c1.html">VisualStudioProjects</a></li><li class="navelem"><a class="el" href="dir_adb98c31aa3440d3acab46561eeb3512.html">TextRPG_Supplemental</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
@@ -132,12 +116,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a4202fa5c5191c7e387d7570da6c8cd8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_text_r_p_g___supplemental_8cpp.html#a4202fa5c5191c7e387d7570da6c8cd8c">end_game</a> ()</td></tr>
 <tr class="memdesc:a4202fa5c5191c7e387d7570da6c8cd8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plays when the user beats the game.  <a href="_text_r_p_g___supplemental_8cpp.html#a4202fa5c5191c7e387d7570da6c8cd8c">More...</a><br /></td></tr>
 <tr class="separator:a4202fa5c5191c7e387d7570da6c8cd8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba2d5fe7d03a2d749a9a872f7520eaab"><td class="memItemLeft" align="right" valign="top">constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_text_r_p_g___supplemental_8cpp.html#aba2d5fe7d03a2d749a9a872f7520eaab">damage</a> (float h, float a)</td></tr>
-<tr class="memdesc:aba2d5fe7d03a2d749a9a872f7520eaab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates damage.  <a href="_text_r_p_g___supplemental_8cpp.html#aba2d5fe7d03a2d749a9a872f7520eaab">More...</a><br /></td></tr>
-<tr class="separator:aba2d5fe7d03a2d749a9a872f7520eaab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_text_r_p_g___supplemental_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
-<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function.  <a href="_text_r_p_g___supplemental_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">More...</a><br /></td></tr>
-<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dcfce56c86a7fa04fb98f3b52e7af99"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_text_r_p_g___supplemental_8cpp.html#a1dcfce56c86a7fa04fb98f3b52e7af99">damage</a> (float h, float a) noexcept -&gt; float</td></tr>
+<tr class="memdesc:a1dcfce56c86a7fa04fb98f3b52e7af99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates damage.  <a href="_text_r_p_g___supplemental_8cpp.html#a1dcfce56c86a7fa04fb98f3b52e7af99">More...</a><br /></td></tr>
+<tr class="separator:a1dcfce56c86a7fa04fb98f3b52e7af99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8216c1645620cdb2f629cde3ac02ffef"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_text_r_p_g___supplemental_8cpp.html#a8216c1645620cdb2f629cde3ac02ffef">main</a> () -&gt; int</td></tr>
+<tr class="memdesc:a8216c1645620cdb2f629cde3ac02ffef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function.  <a href="_text_r_p_g___supplemental_8cpp.html#a8216c1645620cdb2f629cde3ac02ffef">More...</a><br /></td></tr>
+<tr class="separator:a8216c1645620cdb2f629cde3ac02ffef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Main file of the project. </p>
@@ -162,7 +146,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the player battle cry. </p>
-<p >This is a friend class.</p>
+<p >This is a friend function.</p>
 <p >This function gets the players battle cry. It is a friend function of the <a class="el" href="class_player.html" title="This class is a subclass of character, meeting LO2.">Player</a> class.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -202,8 +186,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aba2d5fe7d03a2d749a9a872f7520eaab" name="aba2d5fe7d03a2d749a9a872f7520eaab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba2d5fe7d03a2d749a9a872f7520eaab">&#9670;&nbsp;</a></span>damage()</h2>
+<a id="a1dcfce56c86a7fa04fb98f3b52e7af99" name="a1dcfce56c86a7fa04fb98f3b52e7af99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dcfce56c86a7fa04fb98f3b52e7af99">&#9670;&nbsp;</a></span>damage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -212,7 +196,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr float damage </td>
+          <td class="memname">auto damage </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>h</em>, </td>
@@ -226,18 +210,18 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> -&gt; float</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Calculates damage. </p>
-<p >Simple function that calculates damage to demonstrate passin functions as arguments (LO7).</p>
+<p >Simple function that calculates damage to demonstrate passin functions as arguments (LO7). Could not figure out how to clear warning C26497. Declaring the function const does not remove the warning and constexpr can not be used.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">float</td><td>h; health variable </td></tr>
@@ -307,7 +291,7 @@ Functions</h2></td></tr>
 <p >Shows Polymorphism and Iterators on aggregates. LO7 &amp; LO3.</p>
 <p >This function was added to demonstrate iterators on aggregates and dynamic dispatch (LO7 &amp; LO3). It just displays some simple text at the end of the game.</p>
 <dl class="section return"><dt>Returns</dt><dd>void</dd></dl>
-<p>I could not figure out how to clear the warnings for these. </p>
+<p>I could not figure out how to clear the warnings for these. Warning C26482 is left because I want to iterate through the array, which means I can not use a constant expression. When following the guide here(<a href="https://docs.microsoft.com/en-us/cpp/code-quality/c26446?view=msvc-170">https://docs.microsoft.com/en-us/cpp/code-quality/c26446?view=msvc-170</a>), the gsl library can not be found. Many of the warnings specify to use gsl but I can not. </p>
 
 </div>
 </div>
@@ -378,23 +362,23 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&nbsp;</a></span>main()</h2>
+<a id="a8216c1645620cdb2f629cde3ac02ffef" name="a8216c1645620cdb2f629cde3ac02ffef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8216c1645620cdb2f629cde3ac02ffef">&#9670;&nbsp;</a></span>main()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int main </td>
+          <td class="memname">auto main </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> -&gt; int </td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Main function. </p>
-<p >This is the main function. All programs need a main function. It simply calls the start_game function.</p>
+<p >This is the main function. All programs need a main function. It simply calls the start_game function. For the bugprone-exception-escape error, trying to declare it noexcept leads to a different warning C26447. I do not know how to prevent main from throwing exceptions.</p>
 <dl class="section return"><dt>Returns</dt><dd>int; main is supposed to return an int. </dd></dl>
 
 </div>
@@ -478,7 +462,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Spawns a small enemy. </p>
-<p >This function is included to shorten code. I do not have to create an object everytime I need to, I just call this function. Uses trailing return type.</p>
+<p >This function is included to shorten code. I do not have to create an object everytime I need to, I just call this function. Uses trailing return type. Source for trailing functions: <a href="https://www.fluentcpp.com/2021/04/16/trailing-return-types/">https://www.fluentcpp.com/2021/04/16/trailing-return-types/</a></p>
 <dl class="section return"><dt>Returns</dt><dd>Return an object of class <a class="el" href="class_enemy.html" title="This class is a subclass of character, meeting LO2.">Enemy</a>. </dd></dl>
 
 </div>
@@ -505,13 +489,9 @@ Functions</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><a class="el" href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a class="el" href="dir_e8c1eaa8ea5decfe9e5510b5b11182ba.html">jakeh</a></li><li class="navelem"><a class="el" href="dir_aef51b861493fac4a4eacd035fc3d2d2.html">OneDrive</a></li><li class="navelem"><a class="el" href="dir_977be78b74f52c1bc5dfac189f90521d.html">SchoolWork</a></li><li class="navelem"><a class="el" href="dir_03b7afccdfa6d89b3ac3f0d4cf388109.html">COP3003</a></li><li class="navelem"><a class="el" href="dir_a736c3fe8c5804e5008b7cf154da01c1.html">VisualStudioProjects</a></li><li class="navelem"><a class="el" href="dir_adb98c31aa3440d3acab46561eeb3512.html">TextRPG_Supplemental</a></li><li class="navelem"><a class="el" href="_text_r_p_g___supplemental_8cpp.html">TextRPG_Supplemental.cpp</a></li>
-    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
 </body>
 </html>

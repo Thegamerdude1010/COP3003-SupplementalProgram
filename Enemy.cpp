@@ -51,7 +51,7 @@ auto Enemy::get_attack() const noexcept -> int { return attack; }
 
 /** @brief Damages the enemy.
  *
- *  LThis function allows us to damage the enemy. It also takes a function as an
+ *  This function allows us to damage the enemy. It also takes a function as an
  * argument (LO7). Source:
  * https://www.geeksforgeeks.org/passing-a-function-as-a-parameter-in-cpp/
  *

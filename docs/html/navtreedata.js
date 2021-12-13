@@ -34,9 +34,9 @@ var NAVTREE =
       [ "Author", "md__c___users_jakeh__one_drive__school_work__c_o_p3003__visual_studio_projects__text_r_p_g__supplemental__r_e_a_d_m_e.html#autotoc_md6", null ],
       [ "License", "md__c___users_jakeh__one_drive__school_work__c_o_p3003__visual_studio_projects__text_r_p_g__supplemental__r_e_a_d_m_e.html#autotoc_md7", null ],
       [ "Acknowledgements", "md__c___users_jakeh__one_drive__school_work__c_o_p3003__visual_studio_projects__text_r_p_g__supplemental__r_e_a_d_m_e.html#autotoc_md8", null ],
-      [ "Comparing the Procedural and Object-Oriented Approaches", "md__c___users_jakeh__one_drive__school_work__c_o_p3003__visual_studio_projects__text_r_p_g__supplemental__r_e_a_d_m_e.html#autotoc_md9", null ],
+      [ "Comparing the Procedural and Object-Oriented Approaches (LO4)", "md__c___users_jakeh__one_drive__school_work__c_o_p3003__visual_studio_projects__text_r_p_g__supplemental__r_e_a_d_m_e.html#autotoc_md9", null ],
       [ "Relationship between Inheritance and Subtyping (LO5)", "md__c___users_jakeh__one_drive__school_work__c_o_p3003__visual_studio_projects__text_r_p_g__supplemental__r_e_a_d_m_e.html#autotoc_md10", null ],
-      [ "Key Programming Concepts Utilized (LO4)", "md__c___users_jakeh__one_drive__school_work__c_o_p3003__visual_studio_projects__text_r_p_g__supplemental__r_e_a_d_m_e.html#autotoc_md11", null ],
+      [ "Key Programming Concepts Utilized", "md__c___users_jakeh__one_drive__school_work__c_o_p3003__visual_studio_projects__text_r_p_g__supplemental__r_e_a_d_m_e.html#autotoc_md11", null ],
       [ "Original Project", "md__c___users_jakeh__one_drive__school_work__c_o_p3003__visual_studio_projects__text_r_p_g__supplemental__r_e_a_d_m_e.html#autotoc_md12", null ]
     ] ],
     [ "Bug List", "bug.html", null ],

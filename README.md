@@ -24,19 +24,19 @@ The code in this project is licensed under the MIT License. [License](LICENSE)
 
 ## Acknowledgements
 Professor Scott Vanselow.
-<br /> https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
-<br /> https://www.fluentcpp.com/2021/04/16/trailing-return-types/
-<br /> https://www.codesdope.com/cpp-stdarray/
-<br /> https://appdividend.com/2019/07/15/type-conversion-in-cpp-tutorial-with-example/
-<br /> https://www.geeksforgeeks.org/passing-a-function-as-a-parameter-in-cpp/
+<br /> Source for input testing: https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
+<br /> Source for trailing return types: https://www.fluentcpp.com/2021/04/16/trailing-return-types/
+<br /> Source for std::array: https://www.codesdope.com/cpp-stdarray/
+<br /> Source for converting types explicitly: https://appdividend.com/2019/07/15/type-conversion-in-cpp-tutorial-with-example/
+<br /> Source for passing functions as parameters: https://www.geeksforgeeks.org/passing-a-function-as-a-parameter-in-cpp/
 
-## Comparing the Procedural and Object-Oriented Approaches
+## Comparing the Procedural and Object-Oriented Approaches (LO4)
 Procedural programming uses functions that can be called at any time, which are used to manipulate data called variables. In procedural programming, functions are not easily reused or modified. Object-Oriented programming (OOP) uses classes and objects, which allows the code to be reused or modified without significant effort using inheritance. Inheritance allows subclasses to inherit members and functions of a base class. Since any function can be used to modify data, there is a lack of security when using procedural programming. Procedural programming uses scope to define where data and variables can be used, but there is no way to explicitly protect data from functions. On the other hand, OOP uses encapsulation and access specifiers to control access to data, allowing the programmer to restrict access to data. In OOP, a programmer can restrict access to variables so only the methods of the same class or its subclasses can be used to modify the data. Object-oriented programming allows for polymorphism, where methods can be redefined in subclasses so the programmer does not have to rewrite it in the base class. In procedural programming, functions can only be defined once, which means it must be modified everytime features need to be added. Even though OOP seems to be better, procedural programming is still used in conjuction with OOP.
 
 ## Relationship between Inheritance and Subtyping (LO5)
 Inheritance and subtyping are similar but different concepts. Inheritance lets a subclass use members and methods of its superclass depending on supplied access specifiers. A class that inherits another class can use the members within the superclass without special methods. Subtyping is the idea that a subtype can be used in place of a supertype. When something expects a supertype, it can be downcast to use the subtype. This can be referred to as dynamic dispatch, where determines whether to use the supertype or any of its subtypes at run time. They are similar because a subclass may inherit a virtual function, then override it. Then the subclass's override could be used in place of the superclass's original definition using dynamic dispatch.
 
-## Key Programming Concepts Utilized (LO4)
+## Key Programming Concepts Utilized
 This program integrates the concepts of object oriented programming, such as inheritance and encapsulation. Inheritance allows the user to reuse code in other places without having to rewrite it.
 <br /> Polymorphism and Dynamic dispatch is briefly used to demonstrate the concept. Polymorphism allows programmers to override functions in a base class within a subclass. Dynamic dispatch allows for selecting which version of a method is called at runtime.
 

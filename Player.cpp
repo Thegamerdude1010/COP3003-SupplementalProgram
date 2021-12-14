@@ -1,6 +1,6 @@
 /** @file Player.cpp
  *
- *  @brief File where player methods are defined.
+ *  @brief File where Player methods are defined.
  *
  *  @author Jacob Holmes
  *  @bug No known bugs.

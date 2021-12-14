@@ -1,6 +1,6 @@
 /** @file Enemy.cpp
  *
- *  @brief File where enemy methods are defined.
+ *  @brief File where Enemy methods are defined.
  *
  *  @author Jacob Holmes
  *  @bug No known bugs.

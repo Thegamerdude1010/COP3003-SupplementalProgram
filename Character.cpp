@@ -1,6 +1,6 @@
 /** @file Character.cpp
  *
- *  @brief File where character methods are defined.
+ *  @brief File where Character methods are defined.
  *
  * This file completes the requirements for LO1a.
  *

@@ -3,7 +3,7 @@
 
 /** @file Enemy.h
  *
- *  @brief Header file for enemy class.
+ *  @brief Header file for Enemy class.
  *
  *  @author Jacob Holmes
  *  @bug No known bugs.

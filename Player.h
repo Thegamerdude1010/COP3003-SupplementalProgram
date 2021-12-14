@@ -4,7 +4,7 @@
 #include "Character.h"
 /** @file Player.h
  *
- *  @brief Header file for player class.
+ *  @brief Header file for Player class.
  *
  *  @author Jacob Holmes
  *  @bug No known bugs.

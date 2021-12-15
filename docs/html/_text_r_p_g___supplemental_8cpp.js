@@ -1,5 +1,7 @@
 var _text_r_p_g___supplemental_8cpp =
 [
+    [ "attack_enemy", "_text_r_p_g___supplemental_8cpp.html#a1a6ed1b12a34de0ff4bf71a307dc14e1", null ],
+    [ "attack_player", "_text_r_p_g___supplemental_8cpp.html#a9080cbe08cbd7b957ea3ea017bbd46ad", null ],
     [ "battle_cry", "_text_r_p_g___supplemental_8cpp.html#a43752dc8b928c920b75ada1f2fd99598", null ],
     [ "charge_attack", "_text_r_p_g___supplemental_8cpp.html#a084619cf4651a5d4a2a6387e7b063e89", null ],
     [ "damage", "_text_r_p_g___supplemental_8cpp.html#a1dcfce56c86a7fa04fb98f3b52e7af99", null ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kill_0',['kill',['../class_character.html#a5b708af3b8b185fd694722c7a566a4a7',1,'Character::kill()'],['../class_enemy.html#ad0bf56e75378d9524f2d77479d259dde',1,'Enemy::kill()']]]
+  ['input_5ftest_0',['input_test',['../_text_r_p_g___supplemental_8cpp.html#a0a726908e0fc6804a07bb80e1e2ee1ef',1,'TextRPG_Supplemental.cpp']]]
 ];

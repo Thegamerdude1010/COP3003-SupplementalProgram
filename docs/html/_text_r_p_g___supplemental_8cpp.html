@@ -135,6 +135,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a1dcfce56c86a7fa04fb98f3b52e7af99"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_text_r_p_g___supplemental_8cpp.html#a1dcfce56c86a7fa04fb98f3b52e7af99">damage</a> (float h, float a) noexcept -&gt; float</td></tr>
 <tr class="memdesc:a1dcfce56c86a7fa04fb98f3b52e7af99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates damage.  <a href="_text_r_p_g___supplemental_8cpp.html#a1dcfce56c86a7fa04fb98f3b52e7af99">More...</a><br /></td></tr>
 <tr class="separator:a1dcfce56c86a7fa04fb98f3b52e7af99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a6ed1b12a34de0ff4bf71a307dc14e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_text_r_p_g___supplemental_8cpp.html#a1a6ed1b12a34de0ff4bf71a307dc14e1">attack_enemy</a> (<a class="el" href="class_enemy.html">Enemy</a> &amp;enemy, <a class="el" href="class_player.html">Player</a> player)</td></tr>
+<tr class="memdesc:a1a6ed1b12a34de0ff4bf71a307dc14e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles logic for attacks against enemies.  <a href="_text_r_p_g___supplemental_8cpp.html#a1a6ed1b12a34de0ff4bf71a307dc14e1">More...</a><br /></td></tr>
+<tr class="separator:a1a6ed1b12a34de0ff4bf71a307dc14e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9080cbe08cbd7b957ea3ea017bbd46ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_text_r_p_g___supplemental_8cpp.html#a9080cbe08cbd7b957ea3ea017bbd46ad">attack_player</a> (<a class="el" href="class_enemy.html">Enemy</a> enemy, <a class="el" href="class_player.html">Player</a> &amp;player)</td></tr>
+<tr class="memdesc:a9080cbe08cbd7b957ea3ea017bbd46ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles logic for attacks against the player.  <a href="_text_r_p_g___supplemental_8cpp.html#a9080cbe08cbd7b957ea3ea017bbd46ad">More...</a><br /></td></tr>
+<tr class="separator:a9080cbe08cbd7b957ea3ea017bbd46ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8216c1645620cdb2f629cde3ac02ffef"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_text_r_p_g___supplemental_8cpp.html#a8216c1645620cdb2f629cde3ac02ffef">main</a> () -&gt; int</td></tr>
 <tr class="memdesc:a8216c1645620cdb2f629cde3ac02ffef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function.  <a href="_text_r_p_g___supplemental_8cpp.html#a8216c1645620cdb2f629cde3ac02ffef">More...</a><br /></td></tr>
 <tr class="separator:a8216c1645620cdb2f629cde3ac02ffef"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -145,6 +151,82 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Jacob Holmes </dd></dl>
 <dl class="bug"><dt><b><a class="el" href="bug.html#_bug000007">Bug:</a></b></dt><dd>No known bugs. </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a1a6ed1b12a34de0ff4bf71a307dc14e1" name="a1a6ed1b12a34de0ff4bf71a307dc14e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a6ed1b12a34de0ff4bf71a307dc14e1">&#9670;&nbsp;</a></span>attack_enemy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void attack_enemy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_enemy.html">Enemy</a> &amp;&#160;</td>
+          <td class="paramname"><em>enemy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_player.html">Player</a>&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handles logic for attacks against enemies. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="class_enemy.html" title="This class is a subclass of character, meeting LO2.">Enemy</a></td><td>enemy; an object of class enemy passed by reference to change its health.</td></tr>
+    <tr><td class="paramname"><a class="el" href="class_player.html" title="This class is a subclass of character, meeting LO2.">Player</a></td><td>player; object of class player to allow us to get the player's damage.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a9080cbe08cbd7b957ea3ea017bbd46ad" name="a9080cbe08cbd7b957ea3ea017bbd46ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9080cbe08cbd7b957ea3ea017bbd46ad">&#9670;&nbsp;</a></span>attack_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void attack_player </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_enemy.html">Enemy</a>&#160;</td>
+          <td class="paramname"><em>enemy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_player.html">Player</a> &amp;&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handles logic for attacks against the player. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="class_enemy.html" title="This class is a subclass of character, meeting LO2.">Enemy</a></td><td>enemy; allows us to get the enemies damage</td></tr>
+    <tr><td class="paramname"><a class="el" href="class_player.html" title="This class is a subclass of character, meeting LO2.">Player</a></td><td>player; passed by reference to allow us to change player health.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
 <a id="a43752dc8b928c920b75ada1f2fd99598" name="a43752dc8b928c920b75ada1f2fd99598"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a43752dc8b928c920b75ada1f2fd99598">&#9670;&nbsp;</a></span>battle_cry()</h2>
 
@@ -305,7 +387,7 @@ Functions</h2></td></tr>
 
 <p>Plays when the user beats the game. </p>
 <p >Shows Polymorphism and Iterators on aggregates. LO7 &amp; LO3.</p>
-<p >This function was added to demonstrate iterators on aggregates and dynamic dispatch (LO7 &amp; LO3). It just displays some simple text at the end of the game.</p>
+<p >This function was added to demonstrate iterators on aggregates and dynamic dispatch (LO7 &amp; LO3). It just displays some simple text at the end of the game. Source for std::array: <a href="https://www.codesdope.com/cpp-stdarray/">https://www.codesdope.com/cpp-stdarray/</a></p>
 <dl class="section return"><dt>Returns</dt><dd>void</dd></dl>
 <p>I could not figure out how to clear the warnings for these. Warning C26482 is left because I want to iterate through the array, which means I can not use a constant expression. When following the guide here(<a href="https://docs.microsoft.com/en-us/cpp/code-quality/c26446?view=msvc-170">https://docs.microsoft.com/en-us/cpp/code-quality/c26446?view=msvc-170</a>), the gsl library can not be found. Many of the warnings specify to use gsl but I can not. </p>
 
@@ -367,7 +449,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>This function tests input. </p>
-<p >When someone enters something, it may be wrong. This function tests if a person enters an int. If they don't, it throws an exception. This allows the program to ask for more input without crashing. It also demonstrates exception handling.</p>
+<p >When someone enters something, it may be wrong. This function tests if a person enters an int. If they don't, it throws an exception. This allows the program to ask for more input without crashing. It also demonstrates exception handling. Source: <a href="https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable">https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">int</td><td>&amp;option; passing an int by reference allows me to test input and send the input back </td></tr>

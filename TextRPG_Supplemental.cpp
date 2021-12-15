@@ -23,7 +23,8 @@
  *  When someone enters something, it may be wrong. This function tests if a
  * person enters an int. If they don't, it throws an exception. This allows the
  * program to ask for more input without crashing. It also demonstrates
- * exception handling.
+ * exception handling. Source:
+ * https://stackoverflow.com/questions/11523569/how-can-i-avoid-char-input-for-an-int-variable
  *
  *  @param int &option; passing an int by reference allows me to test input and
  * send the input back
@@ -80,7 +81,6 @@ void charge_attack(Player &player);
  *
  *  @return Return an object of class Enemy.
  */
-//
 auto spawn_small_enemy() -> Enemy;
 
 /** @brief Spawns a big enemy.
@@ -130,7 +130,7 @@ void final_encounter(Enemy enemy, Player &player);
  *
  *  This function was added to demonstrate iterators on aggregates and dynamic
  * dispatch (LO7 & LO3). It just displays some simple text at the end of the
- * game.
+ * game. Source for std::array: https://www.codesdope.com/cpp-stdarray/
  *
  *  @return void
  */
@@ -147,6 +147,31 @@ void end_game();
  *  @return Returns a float, the result of h-a
  */
 auto damage(float h, float a) noexcept -> float;
+
+/**
+ * @brief Handles logic for attacks against enemies.
+ *
+ * @param Enemy enemy; an object of class enemy passed by reference to change
+ * its health.
+ *
+ * @param Player player; object of class player to allow us to get the player's
+ * damage.
+ *
+ * @return void
+ */
+void attack_enemy(Enemy &enemy, Player player);
+
+/**
+ * @brief Handles logic for attacks against the player.
+ *
+ * @param Enemy enemy; allows us to get the enemies damage
+ *
+ * @param Player player; passed by reference to allow us to change player
+ * health.
+ *
+ * @return void
+ */
+void attack_player(Enemy enemy, Player &player);
 
 /** @brief Main function.
  *
@@ -208,12 +233,18 @@ void run_game() {
   std::cout << "0: Look through the gate\n1: Open the gate\n2: look around"
             << std::endl;
   input_test(option);
+  // Using a while loop allows me to repeat the menu selection if the user enter
+  // something wrong.
   while (running) {
     switch (option) {
       case 0:
         std::cout << "\nAn enemy saw you and came through the gate!"
                   << std::endl;
         encounter(spawn_small_enemy(), player);
+
+        // This if statement and the others below allow the game to exit this
+        // function if the player dies. Since the function is void, simply using
+        // return allows the program to exit the function.
         if (player.get_health() <= 0) {
           return;
         }
@@ -233,6 +264,7 @@ void run_game() {
         end_game();
         running = false;
         break;
+
       case 1:
         std::cout << "\nYou enter the gate." << std::endl;
         encounter(spawn_big_enemy(), player);
@@ -249,6 +281,7 @@ void run_game() {
         end_game();
         running = false;
         break;
+
       case 2:
         std::cout << "\nYou find a hole and enter it." << std::endl;
         std::cout << "\nYou fell into the bosses cave!" << std::endl;
@@ -261,6 +294,7 @@ void run_game() {
         end_game();
         running = false;
         break;
+
       default:
         std::cout << "Incorrect Input, try again" << std::endl;
         input_test(option);
@@ -276,15 +310,12 @@ void encounter(Enemy enemy, Player &player) {
   bool alive = true;
   input_test(option);
 
+  // This while loop allows the user to continue attacking or defending until
+  // the enemy or the player dies.
   while (alive) {
     switch (option) {
       case 0:
-        battle_cry(player);
-        std::cout << "You succsesfully attacked the enemy" << std::endl;
-        enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
-        std::cout << "You did " << player.get_attack()
-                  << " damage. The enemy now has " << enemy.get_health()
-                  << " health." << std::endl;
+        attack_enemy(enemy, player);
         if (enemy.get_health() < 1) {
           alive = false;
         } else {
@@ -292,19 +323,9 @@ void encounter(Enemy enemy, Player &player) {
           input_test(option);
         }
         break;
-      case 1:
-        std::cout << "You try and defend but you are not very good"
-                  << std::endl;
-        // https://appdividend.com/2019/07/15/type-conversion-in-cpp-tutorial-with-example/
-        if (static_cast<float>(enemy.get_attack()) < player.get_health()) {
-          player.take_damage(static_cast<float>(enemy.get_attack()));
-        } else {
-          player.take_damage(player.get_health());
-        }
 
-        std::cout << "You took " << enemy.get_attack()
-                  << " damage. You now have " << player.get_health()
-                  << " health." << std::endl;
+      case 1:
+        attack_player(enemy, player);
         if (player.get_health() < 1) {
           alive = false;
         } else {
@@ -313,6 +334,7 @@ void encounter(Enemy enemy, Player &player) {
         }
 
         break;
+
       default:
         std::cout << "That wasn't an option!" << std::endl;
         std::cout << "The enemy took advantage of you and killed you"
@@ -321,6 +343,8 @@ void encounter(Enemy enemy, Player &player) {
         alive = false;
     }
   }
+  // If the enemy is dead, the player level up. If the player dies, they are
+  // simply dead and the game is over.
   if (enemy.get_health() <= 0) {
     std::cout << "You killed the enemy! Good Job!" << std::endl;
     std::cout
@@ -344,18 +368,16 @@ void final_encounter(Enemy enemy, Player &player) {
   std::cout << "What will you do?" << std::endl;
   std::cout << "0: Attack\n1: Defend\n2: Charge Attack" << std::endl;
   int option = -1;
+  float tempAttack = 0.0F;
   bool alive = true;
   input_test(option);
 
+  // This while loop allows the user to continue attacking or defending until
+  // the enemy or the player dies.
   while (alive) {
     switch (option) {
       case 0:
-        battle_cry(player);
-        std::cout << "You succsesfully attacked the enemy" << std::endl;
-        enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
-        std::cout << "You did " << player.get_attack()
-                  << " damage. The enemy now has " << enemy.get_health()
-                  << " health." << std::endl;
+        attack_enemy(enemy, player);
         if (enemy.get_health() < 1) {
           alive = false;
         } else {
@@ -363,13 +385,9 @@ void final_encounter(Enemy enemy, Player &player) {
           input_test(option);
         }
         break;
+
       case 1:
-        std::cout << "You try and defend but you are not very good"
-                  << std::endl;
-        player.take_damage(static_cast<float>(enemy.get_attack()));
-        std::cout << "You took " << enemy.get_attack()
-                  << " damage. You now have " << player.get_health()
-                  << " health." << std::endl;
+        attack_player(enemy, player);
         if (player.get_health() < 1) {
           alive = false;
         } else {
@@ -378,7 +396,10 @@ void final_encounter(Enemy enemy, Player &player) {
         }
 
         break;
+
       case 2:
+        // stores the previous attack so it can be reset later.
+        tempAttack = player.get_attack();
         try {
           charge_attack(player);
         }
@@ -391,14 +412,9 @@ void final_encounter(Enemy enemy, Player &player) {
           player.set_health(0);
           return;
         }
-        std::cout << "You succsesfully attacked the enemy" << std::endl;
-        enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
-        if (enemy.get_health() < 0) {
-          enemy.set_health(0);
-        }
-        std::cout << "You did " << player.get_attack()
-                  << " damage. The enemy now has " << enemy.get_health()
-                  << " health." << std::endl;
+        attack_enemy(enemy, player);
+
+        player.set_attack(tempAttack);
         if (enemy.get_health() < 1) {
           alive = false;
         } else {
@@ -406,6 +422,7 @@ void final_encounter(Enemy enemy, Player &player) {
           input_test(option);
         }
         break;
+
       default:
         std::cout << "That wasn't an option!" << std::endl;
         std::cout << "The enemy took advantage of you and killed you"
@@ -414,6 +431,7 @@ void final_encounter(Enemy enemy, Player &player) {
         alive = false;
     }
   }
+
   if (enemy.get_health() <= 0) {
     std::cout << "You killed the enemy! Good Job!" << std::endl;
   } else {
@@ -457,6 +475,8 @@ void charge_attack(Player &player) {
   float a = 0;
   std::cout << "Charge attack: Enter the amount to attack!" << std::endl;
 
+  // I handle the error checking here instead of using input_test because I want
+  // it to behave differently.
   try {
     std::cin >> a;
     // Source:
@@ -464,13 +484,13 @@ void charge_attack(Player &player) {
     if (std::cin.fail()) {
       std::cin.clear();                // clears cin
       std::cin.ignore(INT_MAX, '\n');  // ignores input
-      throw std::string("NOT AN INTEGER");
+      throw std::string("NOT AN INTEGER ");
     }
   }
   // I have this set up to catch a string if cin fails when someone does not
   // enter an integer.
   catch (const std::string &e) {
-    std::cout << e << "\nYou can't enter that silly! Now the game is over."
+    std::cout << e << "You can't enter that silly! Now you will do no damage."
               << std::endl;
   }
 
@@ -499,6 +519,29 @@ auto spawn_boss() -> Enemy {
 }
 
 auto damage(float h, float a) noexcept -> float { return h - a; }
+
+void attack_enemy(Enemy &enemy, const Player player) {
+  battle_cry(player);
+  std::cout << "You successfully attacked the enemy" << std::endl;
+  enemy.take_damage(enemy.get_health(), player.get_attack(), &damage);
+  if (enemy.get_health() < 0) {
+    enemy.set_health(0);
+  }
+  std::cout << "You did " << player.get_attack()
+            << " damage. The enemy now has " << enemy.get_health() << " health."
+            << std::endl;
+}
+
+void attack_player(Enemy enemy, Player &player) {
+  std::cout << "You try and defend but you are not very good" << std::endl;
+  // https://appdividend.com/2019/07/15/type-conversion-in-cpp-tutorial-with-example/
+  player.take_damage(static_cast<float>(enemy.get_attack()));
+  if (player.get_health() < 0) {
+    player.set_health(0);
+  }
+  std::cout << "You took " << enemy.get_attack() << " damage. You now have "
+            << player.get_health() << " health." << std::endl;
+}
 
 void input_test(int &option) {
   try {

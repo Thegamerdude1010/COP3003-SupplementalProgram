@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_7echaracter_0',['~Character',['../class_character.html#a9e9be564d05ded80962b2045aa70b3fc',1,'Character']]],
-  ['_7eenemy_1',['~Enemy',['../class_enemy.html#aafb628c66008e33afdd750e2f492bd98',1,'Enemy']]]
+  ['take_5fdamage_0',['take_damage',['../class_character.html#a8dc1bdd6f6ffa7689a310f96c0f37e8a',1,'Character::take_damage()'],['../class_enemy.html#a8e5f603c0810a1cd84d56a465466844f',1,'Enemy::take_damage()'],['../class_player.html#a9c2604a00ed957d6ae335602d3120600',1,'Player::take_damage()']]]
 ];
